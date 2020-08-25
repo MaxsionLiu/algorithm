@@ -23,3 +23,21 @@ var preorder = function(root) {
     getFistNode(root)
     return result
 }
+
+// 26. 删除排序数组中的重复项
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+   if(!nums) return 0
+   if(nums.length === 1) return 1
+
+   let pre = 0
+   for (let i = 0; i < nums.length;) {
+         if(nums[pre] !== nums[i]) {
+               nums[++pre] = nums[i]
+         }
+   }
+   return pre + 1
+}
