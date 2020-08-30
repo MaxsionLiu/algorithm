@@ -146,3 +146,30 @@ var maxDepth = function(root) {
   
       return 1 + Math.max(maxDepth(root.left), maxDepth(root.right))
 };
+
+// 98. 验证二叉搜索树
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var isValidBST = function(root) {
+      function helper(node, min, max) {
+          if(node === null) {
+             return true
+          }
+          if (node.val <= min ||  node.val >= max) {
+              return false
+          }
+  
+          return helper(node.left, min, node.val) && helper(node.right, node.val, max)
+      }
+  
+      return helper(root, -Infinity, Infinity)
+};
