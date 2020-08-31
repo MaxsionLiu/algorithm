@@ -173,3 +173,25 @@ var isValidBST = function(root) {
   
       return helper(root, -Infinity, Infinity)
 };
+
+//53. 最大子序和
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+// 输入: [-2,1,-3,4,-1,2,1,-5,4]
+// 输出: 6
+// 解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+// 比如求一个家族最大的财富
+// 假如第一代的财富就是最大 
+// 如果第二代发现上代是负的 那么重头再来 自己打天下 如果是正的 则继承过来 到这代终点如果 超过了之前最大的财富则就是最大
+// 否则最大的财富还是上次积累的
+var maxSubArray = function(nums) {
+      let max = nums[0]
+      let pre = 0
+      for(num of nums) {
+          pre = pre > 0 ? num + pre : num
+          max = max > pre ? max : pre
+      }
+      return max
+};
