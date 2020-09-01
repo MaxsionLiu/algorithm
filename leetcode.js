@@ -256,3 +256,20 @@ var countAndSay = function(n) {
       }
       return helper(n)
   };
+
+// 58. 最后一个单词的长度
+// 输入: "Hello World"
+// 输出: 5
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLastWord = function(s) {
+      if(!s || s.length === 0){
+          return 0
+      }
+      let str = s.trim()
+      let strArr = str.split(' ')
+   
+      return strArr[strArr.length - 1].length
+};
