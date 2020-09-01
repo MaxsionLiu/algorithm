@@ -223,3 +223,36 @@ var isSymmetric = function(root) {
       }
       return helper(root.left,root.right)
   };
+
+// 38. 外观数列
+/**
+ * @param {number} n
+ * @return {string}
+ */
+// 1.     1
+// 2.     11
+// 3.     21
+// 4.     1211
+// 5.     111221
+var countAndSay = function(n) {
+      function helper(n) {
+         if (n === 1) {
+             return '1'
+         }
+         const pre = helper(n-1)
+         let curr = ''
+         let i = 0
+         for(let j = 1; j <= pre.length; j++) {
+             if(j === pre.length) {
+                 curr += (j - i) + pre[i]
+                 return curr
+             }
+             if (pre[i] !== pre[j]) {
+                 curr += (j - i) + pre[i]
+                 i = j
+             }
+         }
+         return curr
+      }
+      return helper(n)
+  };
