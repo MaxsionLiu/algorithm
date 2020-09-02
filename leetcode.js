@@ -303,3 +303,55 @@ var plusOne = function(digits) {
   
       return digits
 };
+
+// 67. 二进制求和
+/**
+ * @param {string} a
+ * @param {string} b
+ * @return {string}
+ */
+// 输入: a = "11", b = "1"
+// 输出: "100"
+var addBinary = function(a, b) {
+      let flag = 0
+  
+      if(a.length > b.length) {
+         let num = a.length - b.length
+           for(let i = 0; i < num; i++){
+            b = '0' + b
+         }
+      }
+      if(a.length < b.length) {
+         let num = b.length - a.length
+         for(let i = 0; i < num; i++){
+            a = '0' + a
+         }
+      }
+  
+      let j = a.length - 1
+      let result = ''
+      while(j >= 0) {
+  
+          let pNum = Number(a[j])
+          let qNum = Number(b[j])
+          
+          if (pNum + qNum + flag === 0) {
+              result = '0' + result
+              flag = 0
+          } else if (pNum + qNum + flag === 1) {
+              result = '1' + result
+              flag = 0
+          }else if (pNum + qNum + flag === 2) {
+              result = '0' + result
+              flag = 1
+          }else if (pNum + qNum + flag === 3) {
+              result = '1' + result
+              flag = 1
+          }
+          j--
+      }
+      if(flag) {
+          result = '1' + result
+      }
+      return result  
+};
