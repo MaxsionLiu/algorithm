@@ -273,3 +273,33 @@ var lengthOfLastWord = function(s) {
    
       return strArr[strArr.length - 1].length
 };
+
+/**
+ * @param {number[]} digits
+ * @return {number[]}
+ */
+// 66. 加一
+// 输入: [1,2,3]
+// 输出: [1,2,4]
+// 解释: 输入数组表示数字 123。
+var plusOne = function(digits) {
+      let have = false
+      for(let i = digits.length - 1; i >= 0;i--) {
+          let item = digits[i]
+          if (i === digits.length - 1 || have) {
+              if (item !== 9) {
+                  digits[i] = item+1
+                  have = false
+              } else {
+                  digits[i] = 0
+                  have = true
+              }
+          }
+      }
+  
+      if (have) {
+          digits.unshift(1)
+      }
+  
+      return digits
+};
