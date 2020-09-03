@@ -355,3 +355,47 @@ var addBinary = function(a, b) {
       }
       return result  
 };
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+// 70. 爬楼梯
+// 输入： 3
+// 输出： 3
+// 解释： 有三种方法可以爬到楼顶。
+// 1.  1 阶 + 1 阶 + 1 阶
+// 2.  1 阶 + 2 阶
+// 3.  2 阶 + 1 阶
+var climbStairs = function(n) {
+      let totalMap = {}
+      function helper (n) {
+        if (n === 1) {
+            return 1
+        }
+        if (n === 2) {
+            return 2
+        }
+        
+        let left
+        let right
+    
+        if (totalMap[n - 1]) {
+           left = totalMap[n - 1]
+        } else {
+           totalMap[n - 1] = helper(n - 1)
+           left = totalMap[n - 1]
+        }
+    
+        if (totalMap[n - 2]) {
+            right = totalMap[n - 2]
+        } else {
+            totalMap[n - 2] = helper(n - 2)
+            right = totalMap[n - 2]
+        }
+    
+        return left + right
+      }
+      
+      return helper(n)
+};
