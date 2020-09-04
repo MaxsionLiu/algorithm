@@ -399,3 +399,44 @@ var climbStairs = function(n) {
       
       return helper(n)
 };
+
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+// 83. 删除排序链表中的重复元素
+// 输入: 1->1->2
+// 输出: 1->2
+
+// 输入: 1->1->2->3->3
+// 输出: 1->2->3
+var deleteDuplicates = function(head) {
+      if(!head || !head.next) {
+          return head
+      }
+      let curr = head
+      let next = curr.next
+  
+      while(next.next) {
+          if(curr.val === next.val) {
+              curr.next = next.next
+              next = next.next
+          }else{
+              curr = curr.next
+              next = curr.next
+          }
+      }
+  
+      if(curr.val === next.val) {
+          curr.next = null
+      }
+      return head
+};
