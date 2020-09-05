@@ -440,3 +440,36 @@ var deleteDuplicates = function(head) {
       }
       return head
 };
+
+
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+// 88. 合并两个有序数组
+// 输入:
+// nums1 = [1,2,3,0,0,0], m = 3
+// nums2 = [2,5,6],       n = 3
+
+// 输出: [1,2,2,3,5,6]
+var merge = function(nums1, m, nums2, n) {
+      let cloneNums1 = nums1.slice(0,m)
+      let p = 0
+      let p1 = 0
+      let p2 = 0
+   
+       while(p1 < m && p2 < n) {
+          nums1[p++] = cloneNums1[p1] < nums2[p2] ? cloneNums1[p1++] : nums2[p2++]  
+       }
+   
+       while(p1 < m) {
+           nums1[p++] = cloneNums1[p1++]
+       }
+   
+       while(p2 < n) {
+           nums1[p++] = nums2[p2++]
+       }
+};
