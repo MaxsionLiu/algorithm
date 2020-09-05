@@ -473,3 +473,38 @@ var merge = function(nums1, m, nums2, n) {
            nums1[p++] = nums2[p2++]
        }
 };
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {boolean}
+ */
+// 100. 相同的树
+// 给定两个二叉树，编写一个函数来检验它们是否相同。
+// 如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
+var isSameTree = function(p, q) {
+      function helper(l,r){
+          if (!l && !r) {
+              return true
+          }
+          if (!l || !r ) {
+              return false
+          }
+  
+          if (l.val === r.val) {
+              return helper(l.left,r.left) && helper(l.right,r.right)
+          } else {
+              return false
+          }
+  
+      }
+      return helper(p,q)
+};
