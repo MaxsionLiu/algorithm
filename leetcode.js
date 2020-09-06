@@ -553,3 +553,33 @@ var levelOrderBottom = function(root) {
       helper(root,0)
       return result.reverse()
 };
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+// 108. 将有序数组转换为二叉搜索树
+var sortedArrayToBST = function(nums) {
+      function helper (left,right){
+  
+          if(left > right) {
+              return null
+          }
+  
+          const mid = parseInt((left + right)/2)
+          const bstTree = new TreeNode(nums[mid])
+          bstTree.left = helper(left, mid - 1)
+          bstTree.right = helper(mid + 1,right)
+  
+          return bstTree
+      }
+  
+      return helper(0,nums.length-1)
+};
