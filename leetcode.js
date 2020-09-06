@@ -508,3 +508,48 @@ var isSameTree = function(p, q) {
       }
       return helper(p,q)
 };
+
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+// 107. 二叉树的层次遍历 II
+// 给定二叉树 [3,9,20,null,null,15,7],
+
+// 3
+// / \
+// 9  20
+//  /  \
+// 15   7
+// 返回其自底向上的层次遍历为：
+// [
+// [15,7],
+// [9,20],
+// [3]
+// ]
+var levelOrderBottom = function(root) {
+      let result = []
+      function helper(node, level) {
+          if(!node) {
+              return
+          }
+          let temp = result[level] || []
+  
+          temp.push(node.val)
+  
+          result[level] = temp
+  
+          helper(node.left, level+1) 
+          helper(node.right, level+1)
+      }
+      helper(root,0)
+      return result.reverse()
+};
