@@ -583,3 +583,31 @@ var sortedArrayToBST = function(nums) {
   
       return helper(0,nums.length-1)
 };
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+// 110. 平衡二叉树
+var isBalanced = function(root) {
+      if(!root) {
+          return true
+      }
+      function helper(node) {
+        if(!node){
+           return 0
+        }
+        
+        return Math.max(helper(node.left),helper(node.right)) + 1
+      }
+  
+  
+      return Math.abs(helper(root.left) - helper(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right)
+};
