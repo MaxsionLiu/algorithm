@@ -643,3 +643,33 @@ var minDepth = function(root) {
       }
       return min + 1
 };
+
+
+/**
+ * @param {number} numRows
+ * @return {number[][]}
+ */
+// 118. 杨辉三角
+var generate = function(numRows) {
+      if (numRows === 0) {
+          return []
+      }
+      if (numRows === 1) {
+          return [[1]]
+      }
+      if (numRows === 1) {
+          return [[1],[1,1]]
+      }
+      const nums = generate(numRows - 1)
+  
+      const preNum = nums[nums.length - 1]
+       
+      const currNew = [1]
+      for(let i = 0; i < preNum.length - 1; i++) {
+        currNew.push(preNum[i] + preNum[i+1])
+      }
+      currNew.push(1)
+  
+      nums.push(currNew)
+      return nums
+};
