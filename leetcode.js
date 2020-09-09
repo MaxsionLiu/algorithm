@@ -700,3 +700,24 @@ var hasPathSum = function(root, sum) {
       }
       return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val)
 };
+
+/**
+ * @param {number} rowIndex
+ * @return {number[]}
+ */
+// 119. 杨辉三角 II
+var getRow = function(rowIndex) {
+      if(rowIndex === 0) {
+          return [1]
+      }
+      if (rowIndex === 1) {
+          return [1,1]
+      }
+      const last = getRow(rowIndex - 1)
+      const curr = [1]
+      for (let i = 0; i < last.length - 1; i++) {
+        curr.push(last[i] + last[i+1])
+      }
+      curr.push(1)
+      return curr
+ };
