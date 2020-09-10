@@ -65,3 +65,21 @@ var isPalindrome = function(s) {
       }
       return true
 };
+
+// 任何数和 0 做异或运算，结果仍然是原来的数，即 a ^ 0 = a。
+// 任何数和其自身做异或运算，结果是 0，即 a ^ a = 0。
+// 异或运算满足交换律和结合律
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+// 输入: [2,2,1]
+// 输出: 1
+// 136. 只出现一次的数字
+var singleNumber = function(nums) {
+      let result = 0
+      for(const n of nums) {
+          result ^= n
+      }
+      return result
+};
