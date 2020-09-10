@@ -34,3 +34,34 @@ var maxProfit = function(prices) {
       }
       return max 
 };
+
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+// 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+// 125. 验证回文串
+var isPalindrome = function(s) {
+      if(s.length <= 1) {
+          return true
+      }
+      let j = s.length - 1
+      let i = 0
+      while (i < j) {
+  
+          while(!(/^[0-9a-zA-Z]+$/.test(s[i])) && i < j) {
+              i++
+          }
+          while(!(/^[0-9a-zA-Z]+$/.test(s[j])) && i < j) {
+              j--
+          }
+          if (s[i].toLowerCase() !== s[j].toLowerCase()) {
+              return false
+          }
+  
+          i++
+          j--
+      }
+      return true
+};
