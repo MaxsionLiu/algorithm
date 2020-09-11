@@ -83,3 +83,35 @@ var singleNumber = function(nums) {
       }
       return result
 };
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+// 141. 环形链表
+var hasCycle = function(head) {
+    
+      if (!head || !head.next) {
+          return false
+      }
+      let low = head
+      let fast = head.next
+  
+      while(low !== fast ) {
+          if(!fast  || !fast.next) {
+              return false
+          }
+          low = low.next
+          fast = fast.next.next
+      }
+  
+      return true
+};
