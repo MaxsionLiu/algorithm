@@ -210,3 +210,27 @@ var twoSum = function(numbers, target) {
       }
       return []
 };
+
+/**
+ * @param {number} n
+ * @return {string}
+ */
+// 168. Excel表列名称
+// 给定一个正整数，返回它在 Excel 表中相对应的列名称。
+
+// 输入: 28
+// 输出: "AB"
+
+// 输入: 52
+// 输出: "AA"
+var convertToTitle = function(n) {
+      let result = ''
+ 
+      while(n !== 0) {
+         n--
+         result =  String.fromCharCode(parseInt(n % 26) + 65) + result
+         n = parseInt(n / 26)
+      }
+ 
+      return result
+ };
