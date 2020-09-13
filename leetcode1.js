@@ -186,3 +186,27 @@ var getIntersectionNode = function(headA, headB) {
       }
       return null
   };
+
+/**
+ * @param {number[]} numbers
+ * @param {number} target
+ * @return {number[]}
+ */
+// 167. 两数之和 II - 输入有序数组
+// 给定一个已按照升序排列 的有序数组，找到两个数使得它们相加之和等于目标数。
+// 输入: numbers = [2, 7, 11, 15], target = 9
+// 输出: [1,2]
+var twoSum = function(numbers, target) {
+      let head = 0
+      let foot = numbers.length - 1
+      while(head < foot){
+          if (numbers[head] + numbers[foot] === target) {
+             return [head+1, foot+1]
+          } else if (numbers[head] + numbers[foot] > target) {
+              foot--
+          } else {
+              head++
+          }
+      }
+      return []
+};
