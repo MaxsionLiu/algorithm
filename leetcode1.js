@@ -234,3 +234,22 @@ var convertToTitle = function(n) {
  
       return result
  };
+
+ /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+// 169. 多数元素
+// 给定一个大小为 n 的数组，找到其中的多数元素。多数元素是指在数组中出现次数大于 ⌊ n/2 ⌋ 的元素。
+// 你可以假设数组是非空的，并且给定的数组总是存在多数元素。
+var majorityElement = function(nums) {
+      let count = 0
+      let mostNum = -1
+      for(const n of nums) {
+          if (count === 0) {
+              mostNum = n
+          }
+          count = n === mostNum ? count + 1 : count - 1
+      }
+      return mostNum
+  };
