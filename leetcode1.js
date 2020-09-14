@@ -253,3 +253,23 @@ var majorityElement = function(nums) {
       }
       return mostNum
   };
+
+  /**
+ * @param {string} s
+ * @return {number}
+ */
+// 171. Excel表列序号
+// 输入: "A"
+// 输出: 1
+// 输入: "AB"
+// 输出: 28
+// 输入: "ZY"
+// 输出: 701
+var titleToNumber = function(s) {
+
+      let num = 0
+      for(let i = s.length - 1; i >= 0; i--) {
+          num = num + (s[i].charCodeAt() - 64) * Math.pow(26,s.length - i - 1)
+      }
+      return num
+  };
