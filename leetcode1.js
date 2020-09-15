@@ -273,3 +273,26 @@ var titleToNumber = function(s) {
       }
       return num
   };
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+// 172. 阶乘后的零
+// 输入: 3
+// 输出: 0
+// 解释: 3! = 6, 尾数中没有零
+
+// 输入: 5
+// 输出: 1
+// 解释: 5! = 120, 尾数中有 1 个零
+var trailingZeroes = function(n) {
+      let res=0;
+  
+      do {
+         res += parseInt(n / 5)
+         n =  parseInt(n / 5)
+      } while(n > 0)
+  
+      return res
+};
