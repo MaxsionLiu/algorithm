@@ -301,3 +301,14 @@ var trailingZeroes = function(n) {
 // left join ...尴尬...
 // select Person.FirstName as FirstName,Person.LastName as LastName,Address.City as City,Address.State as State
 // from   Person left join  Address on  Person.PersonId = Address.PersonId
+
+// 176. 第二高的薪水
+// Write your MySQL query statement below
+// SELECT
+//     (SELECT DISTINCT
+//             Salary
+//         FROM
+//             Employee
+//         ORDER BY Salary DESC
+//         LIMIT 1 OFFSET 1) AS SecondHighestSalary
+// ;
