@@ -296,3 +296,8 @@ var trailingZeroes = function(n) {
   
       return res
 };
+
+// 175. 组合两个表
+// left join ...尴尬...
+// select Person.FirstName as FirstName,Person.LastName as LastName,Address.City as City,Address.State as State
+// from   Person left join  Address on  Person.PersonId = Address.PersonId
