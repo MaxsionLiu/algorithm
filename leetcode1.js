@@ -312,3 +312,11 @@ var trailingZeroes = function(n) {
 //         ORDER BY Salary DESC
 //         LIMIT 1 OFFSET 1) AS SecondHighestSalary
 // ;
+
+// 181. 超过经理收入的员工
+// SELECT
+//      a.NAME AS Employee
+// FROM Employee AS a JOIN Employee AS b
+//      ON a.ManagerId = b.Id
+//      AND a.Salary > b.Salary
+// ;
