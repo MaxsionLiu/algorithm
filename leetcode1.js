@@ -320,3 +320,14 @@ var trailingZeroes = function(n) {
 //      ON a.ManagerId = b.Id
 //      AND a.Salary > b.Salary
 // ;
+
+
+// 182. 查找重复的电子邮箱
+// select a.Email from Person as a
+// join Person as b
+// ON a.Id != b.Id AND a.Email = b.Email group by a.Email;
+
+// 183. 从不订购的客户
+// select Customers.Name as Customers from Customers
+// left join Orders on Customers.Id = Orders.CustomerId
+// where Orders.CustomerId is null
