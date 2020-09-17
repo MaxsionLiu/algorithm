@@ -331,3 +331,20 @@ var trailingZeroes = function(n) {
 // select Customers.Name as Customers from Customers
 // left join Orders on Customers.Id = Orders.CustomerId
 // where Orders.CustomerId is null
+
+/**
+ * @param {number} n - a positive integer
+ * @return {number}
+ */
+// 输入：00000000000000000000000000001011
+// 输出：3
+// 解释：输入的二进制串 00000000000000000000000000001011 中，共有三位为 '1'。
+// 191. 位1的个数
+var hammingWeight = function(n) {
+      let sum = 0
+        while(n != 0){
+            sum++
+            n &= (n-1)
+        }
+      return sum
+};
