@@ -354,3 +354,9 @@ var hammingWeight = function(n) {
 //     Person p2
 // WHERE
 //     p1.Email = p2.Email AND p1.Id > p2.Id
+
+// # Write your MySQL query statement below
+// 197. 上升的温度
+// select p1.Id FROM Weather as p1   
+// join Weather as p2
+// on DATEDIFF(p1.RecordDate, p2.RecordDate) = 1 and p1.Temperature > p2.Temperature
