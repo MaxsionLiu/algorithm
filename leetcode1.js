@@ -390,3 +390,35 @@ var rob = function(nums) {
       }
       return second
   };
+
+  /**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} val
+ * @return {ListNode}
+ */
+// 203. 移除链表元素
+// 删除链表中等于给定值 val 的所有节点。
+// 输入: 1->2->6->3->4->5->6, val = 6
+// 输出: 1->2->3->4->5
+var removeElements = function(head, val) {
+      let flagNode = new ListNode(0)
+      flagNode.next = head
+      let pre = flagNode
+      let curr = flagNode.next
+      while (curr) {
+          if (curr.val === val) {
+              pre.next = curr.next
+          } else {
+              pre = curr
+          }
+          curr = curr.next
+      }
+      return flagNode.next
+  };
