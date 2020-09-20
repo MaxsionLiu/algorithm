@@ -455,4 +455,33 @@ var step = function(n) {
             n = parseInt(n / 10)
       }
       return result
-}  
+}
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+// 输入: 1->2->3->4->5->NULL
+// 输出: 5->4->3->2->1->NULL
+// 206. 反转链表
+var reverseList = function(head) {
+
+      let pre = null
+      let curr = head
+      while(curr) {
+          let temp = curr.next
+          curr.next = pre
+   
+          pre = curr
+          curr = temp
+      }
+   
+      return pre
+};
