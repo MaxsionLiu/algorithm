@@ -559,3 +559,43 @@ var invertTree = function(root) {
 var isPowerOfTwo = function(n) {
       return n > 0 && (n & (n - 1)) === 0
 };
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+// 请判断一个链表是否为回文链表。
+// 输入: 1->2
+// 输出: false
+// 输入: 1->2->2->1
+// 输出: true
+// 234. 回文链表
+var isPalindrome = function(head) {
+      if (!head || !head.next) {
+          return true
+      }
+      let curr = head
+      let arr = []
+      while(curr) {
+          arr.push(curr.val)
+          curr = curr.next
+      }
+      let leftIdx = 0
+      let rightIdx = arr.length - 1
+      while(leftIdx <= rightIdx) {
+          if(arr[leftIdx] !== arr[rightIdx]) {
+              return false
+          }
+          leftIdx++
+          rightIdx--
+      }
+      return true
+   };
+   
