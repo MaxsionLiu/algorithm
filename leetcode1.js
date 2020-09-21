@@ -525,3 +525,27 @@ var containsNearbyDuplicate = function(nums, k) {
       }
       return false
   };
+
+  /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+// 226. 翻转二叉树
+// 输入 [4,2,7,1,3,6,9]
+// 输出 [4,2,7,1,3,6,9]
+var invertTree = function(root) {
+      if (!root) {
+          return root
+      }
+      let temp = root.left
+      root.left = invertTree(root.right)
+      root.right = invertTree(temp)
+      return root
+  };
