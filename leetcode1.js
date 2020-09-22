@@ -631,4 +631,13 @@ var lowestCommonAncestor = function(root, p, q) {
           return root
       }
   };
-   
+
+  /**
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */
+// 237. 删除链表中的节点
+var deleteNode = function(node) {
+      node.val = node.next.val
+      node.next = node.next.next
+  };
