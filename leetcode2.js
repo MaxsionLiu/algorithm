@@ -41,3 +41,13 @@ var binaryTreePaths = function(root) {
        helper(root, '')
        return result
    };
+
+/**
+ * @param {number} num
+ * @return {number}
+ */
+// 258. 各位相加
+// 给定一个非负整数 num，反复将各个位上的数字相加，直到结果为一位数。
+var addDigits = function(num) {
+      return (num - 1) % 9 + 1;
+  };
