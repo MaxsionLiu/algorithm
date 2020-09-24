@@ -77,3 +77,20 @@ var isUgly = function(num) {
       }
       return false
   };
+
+  /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+// 268. 缺失数字
+// 输入: [3,0,1]
+// 输出: 2
+// 输入: [9,6,4,2,3,5,7,0,1]
+// 输出: 8
+var missingNumber = function(nums) {
+      let n = nums.length
+      let sum = (n + 1) * n / 2 
+      return nums.reduce((pre, curr) => {
+          return pre - curr
+      }, sum)
+   };
