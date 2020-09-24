@@ -94,3 +94,43 @@ var missingNumber = function(nums) {
           return pre - curr
       }, sum)
    };
+
+// 278. 第一个错误的版本
+/**
+ * Definition for isBadVersion()
+ * 
+ * @param {integer} version number
+ * @return {boolean} whether the version is bad
+ * isBadVersion = function(version) {
+ *     ...
+ * };
+ */
+
+/**
+ * @param {function} isBadVersion()
+ * @return {function}
+ */
+var solution = function(isBadVersion) {
+
+      function helper(l,r) {
+          
+          let mid = parseInt((l + r)/2)
+          let bad = isBadVersion(mid)
+          let good = isBadVersion(mid + 1)
+      
+          if (good && !bad) {
+              return mid + 1
+          } else if (good && bad) {
+              return helper(l, mid)
+          } else {
+              return helper(mid,r)
+          }
+      }
+      /**
+       * @param {integer} n Total versions
+       * @return {integer} The first bad version
+       */
+      return function(n) {
+         return helper(0,n)
+      };
+  };
