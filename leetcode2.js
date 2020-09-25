@@ -158,3 +158,35 @@ var moveZeroes = function(nums) {
            }
        }
    };
+
+/**
+ * @param {string} pattern
+ * @param {string} s
+ * @return {boolean}
+ */
+// 290. 单词规律
+// 给定一种规律 pattern 和一个字符串 str ，判断 str 是否遵循相同的规律。
+// 这里的 遵循 指完全匹配，例如， pattern 里的每个字母和字符串 str 中的每个非空单词之间存在着双向连接的对应规律。
+// 输入: pattern = "abba", str = "dog cat cat dog"
+// 输出: true
+var wordPattern = function(pattern, s) {
+      let patternList = pattern.split('')
+      let strList = s.split(' ')
+      let hashMap = {}
+      if (patternList.length !== strList.length) {
+          return false
+      }
+      if ([...new Set(patternList)].length !== [...new Set(strList)].length) {
+          return false
+      }
+      for(let i = 0; i < patternList.length; i++) {
+        let patternStr = patternList[i]
+        let str = strList[i]
+        if(!hashMap[patternStr]) {
+            hashMap[patternStr] = str
+        } else if(hashMap[patternStr] !== str) {
+            return false
+        }
+      }
+      return true
+  };
