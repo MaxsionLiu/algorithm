@@ -190,3 +190,12 @@ var wordPattern = function(pattern, s) {
       }
       return true
   };
+
+  /**
+ * @param {number} n
+ * @return {boolean}
+ */
+// 292. Nim 游戏
+var canWinNim = function(n) {
+      return n % 4 !== 0
+   };
