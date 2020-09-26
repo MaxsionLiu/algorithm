@@ -199,3 +199,38 @@ var wordPattern = function(pattern, s) {
 var canWinNim = function(n) {
       return n % 4 !== 0
    };
+
+// 303. 区域和检索 - 数组不可变
+// 给定一个整数数组  nums，求出数组从索引 i 到 j  (i ≤ j) 范围内元素的总和，包含 i,  j 两点。
+/**
+ * @param {number[]} nums
+ */
+var NumArray = function(nums) {
+      this.nums = nums;
+  };
+  
+/**
+ * @param {number[]} nums
+ */
+var NumArray = function(nums) {
+      nums.reduce((pre, curr,idx) => {
+          nums[idx] = pre + curr
+          return pre + curr
+      }, 0)
+      this.nums = [0,...nums];
+  };
+  
+  /** 
+   * @param {number} i 
+   * @param {number} j
+   * @return {number}
+   */
+  NumArray.prototype.sumRange = function(i, j) {
+     return this.nums[j+1] - this.nums[i]
+  };
+  
+  /**
+   * Your NumArray object will be instantiated and called as such:
+   * var obj = new NumArray(nums)
+   * var param_1 = obj.sumRange(i,j)
+   */
