@@ -252,3 +252,20 @@ var isPowerOfThree = function(n) {
 var isPowerOfFour = function(num) {
       return num > 0 && (num & (num - 1)) == 0 && (num % 3) == 1
   };
+
+/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+// 344. 反转字符串
+var reverseString = function(s) {
+      let i = 0
+      let j = s.length - 1
+      while(i < j) {
+          let temp = s[i]
+          s[i] = s[j]
+          s[j] = temp
+          i++
+          j--
+      }
+   };
