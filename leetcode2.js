@@ -234,3 +234,12 @@ var NumArray = function(nums) {
    * var obj = new NumArray(nums)
    * var param_1 = obj.sumRange(i,j)
    */
+
+//326. 3的幂
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isPowerOfThree = function(n) {
+      return /^10*$/.test(n.toString(3))
+};
