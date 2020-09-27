@@ -269,3 +269,33 @@ var reverseString = function(s) {
           j--
       }
    };
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+// 编写一个函数，以字符串作为输入，反转该字符串中的元音字母。
+// 345. 反转字符串中的元音字母
+var reverseVowels = function(s) {
+      let strList = s.split('')
+      let part = ['a','A','e','E','i','I','o','O','u','U']
+      let i = 0
+      let j = strList.length - 1
+      while(i < j) {
+          while(part.indexOf(strList[i]) === -1 && i < j){
+              i++
+          }
+  
+          while(part.indexOf(strList[j]) === -1 && i < j){
+              j--
+          }
+  
+  
+          let temp = strList[i]
+          strList[i] = strList[j]
+          strList[j] = temp
+          i++
+          j--
+      }
+       return  strList.join('')
+  };
