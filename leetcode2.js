@@ -243,3 +243,12 @@ var NumArray = function(nums) {
 var isPowerOfThree = function(n) {
       return /^10*$/.test(n.toString(3))
 };
+
+/**
+ * @param {number} num
+ * @return {boolean}
+ */
+// 342. 4的幂
+var isPowerOfFour = function(num) {
+      return num > 0 && (num & (num - 1)) == 0 && (num % 3) == 1
+  };
