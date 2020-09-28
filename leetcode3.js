@@ -23,3 +23,18 @@ var isPerfectSquare = function(num) {
       return helper(num, 0, num)
    
  };
+
+//  371. 两整数之和
+/**
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ */
+var getSum = function(a, b) {
+      while(b !== 0) {
+          let temp = a ^ b
+          b =  (a & b ) << 1
+          a = temp
+      }
+      return a
+  };
