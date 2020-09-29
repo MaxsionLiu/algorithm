@@ -72,3 +72,30 @@ var guessNumber = function(n) {
       }
       return helper(0,n)
   };
+
+  /**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
+// 383. 赎金信
+var canConstruct = function(ransomNote, magazine) {
+      const ransomNoteList = ransomNote.split('')
+      const magazineList = magazine.split('')
+      let hash = {}
+      for(let mag of  magazineList) {
+          if(hash[mag]) {
+              hash[mag] = hash[mag] + 1
+          }else{
+              hash[mag] = 1
+          }
+      }
+      for(let ransom of  ransomNoteList) {
+          if(!hash[ransom]) {
+              return false
+          }else {
+              hash[ransom] = hash[ransom] - 1
+          }
+      }
+      return true
+  };
