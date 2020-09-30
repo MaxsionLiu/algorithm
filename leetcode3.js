@@ -121,3 +121,21 @@ var firstUniqChar = function(s) {
       }
       return -1
    };
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {character}
+ */
+// 389. 找不同
+// 给定两个字符串 s 和 t，它们只包含小写字母。
+// 字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。
+// 请找出在 t 中被添加的字母。
+var findTheDifference = function(s, t) {
+      let ant = t[t.length - 1].charCodeAt(0)
+      for(let i = 0; i < s.length; i++) {
+          ant ^= s[i].charCodeAt(0)
+          ant ^= t[i].charCodeAt(0)
+      }
+      return String.fromCharCode(ant)
+  };
