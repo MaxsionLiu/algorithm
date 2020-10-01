@@ -139,3 +139,40 @@ var findTheDifference = function(s, t) {
       }
       return String.fromCharCode(ant)
   };
+
+
+ /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 404. 左叶子之和
+var sumOfLeftLeaves = function(root) {
+      function isLeaf(node) {
+         return !node.left && !node.right
+      }
+      function helper(node) {
+          let result = 0
+          if (node.left) {
+              if (isLeaf(node.left)) {
+                 result += node.left.val
+              } else {
+                 result += helper(node.left) 
+              }
+          }
+          if(node.right && !isLeaf(node.right)) {
+              result += helper(node.right)
+          }
+          return result
+      }
+      if(!root) {
+         return 0
+      }
+      return helper(root)
+ }; 
