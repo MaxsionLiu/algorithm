@@ -203,3 +203,13 @@ var fizzBuzz = function(n) {
       }
       return result
   };
+
+  /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+// 414. 第三大的数
+var thirdMax = function(nums) {
+      var arr = [...new Set(nums)].sort((a, b) => b - a);
+      return arr.length >=3 ? arr[2] : arr[0]
+};
