@@ -213,3 +213,42 @@ var thirdMax = function(nums) {
       var arr = [...new Set(nums)].sort((a, b) => b - a);
       return arr.length >=3 ? arr[2] : arr[0]
 };
+
+/**
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+// 415. 字符串相加
+var addStrings = function(num1, num2) {
+      let i = num1.length - 1
+      let j = num2.length - 1
+      let s = ''
+      let have = false
+      while(i >= 0 || j >= 0) {
+            let temp = 0
+            if (num1[i]) {
+                temp += parseInt(num1[i])
+            }
+            if (num2[j]) {
+                temp += parseInt(num2[j])
+            }
+            if(have) {
+              temp = temp + 1
+            }
+            if(temp > 9) {
+              temp = temp - 10
+              have = true
+            } else {
+              have = false
+            }
+            s = temp + '' + s  
+            i--
+            j--    
+      }
+      if (have) {
+          s = '1' + s
+      }
+      
+      return s
+  };
