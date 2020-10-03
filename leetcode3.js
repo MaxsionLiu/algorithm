@@ -252,3 +252,13 @@ var addStrings = function(num1, num2) {
       
       return s
   };
+
+  /**
+ * @param {string} s
+ * @return {number}
+ */
+// 434. 字符串中的单词数
+var countSegments = function(s) {
+    
+      return s.split(' ').filter(item => item).length
+  };
