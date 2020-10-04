@@ -262,3 +262,32 @@ var countSegments = function(s) {
     
       return s.split(' ').filter(item => item).length
   };
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+// 441. 排列硬币
+var arrangeCoins = function(n) {
+      // an = a1 + (n-1)*d
+      // Sn=n(a1+an)/2=na1+n(n-1)d/2=dn^2/2+(a1-d/2)n
+      // Sn=n(a1+an)/2
+      //   =n(a1 + (a1+(n-1)*d))/2
+      //   =n(2a1 + n(n-1)*d)/2
+      //   =na1 +n(n-1)*d / 2
+      //   =na1 + dn^2/2-nd/2
+      //   =dn^2/2 + n(a1-d/2)
+      if (n < 2) {
+        return n
+      }
+      
+      let k = 0
+      while(k * (k+1) / 2 < n) {
+          k++
+      }
+      if (k * (k - 1)/2 + k > n){
+          return k - 1
+      } else {
+          return k
+      }
+};
