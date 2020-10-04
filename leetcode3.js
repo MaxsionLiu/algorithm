@@ -291,3 +291,22 @@ var arrangeCoins = function(n) {
           return k
       }
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+// 448. 找到所有数组中消失的数字
+var findDisappearedNumbers = function(nums) {
+
+      for(let num of nums) {
+          const absNum = Math.abs(num);
+          if (nums[absNum - 1] > 0) {
+              nums[absNum - 1] *= -1;
+          }
+      }
+  
+      return nums.map((n,idx) => {
+          return n < 0 ? 0 : idx + 1
+      }).filter(n => n > 0)
+  };
