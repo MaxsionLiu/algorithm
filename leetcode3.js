@@ -310,3 +310,17 @@ var findDisappearedNumbers = function(nums) {
           return n < 0 ? 0 : idx + 1
       }).filter(n => n > 0)
   };
+
+  /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+// 453. 最小移动次数使数组元素相等
+var minMoves = function(nums) {
+      let count = 0;
+      const min = Math.min(...nums);
+      nums.forEach(val=>{
+          count += (val-min)
+      })
+      return count
+  };
