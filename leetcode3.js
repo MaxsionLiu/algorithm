@@ -349,3 +349,40 @@ var findContentChildren = function(g, s) {
       }
       return count
    };
+
+
+   /**
+ * @param {number} x
+ * @param {number} y
+ * @return {number}
+ */
+// 461. 汉明距离
+var hammingDistance = function(x, y) {
+      let xOne = x.toString(2)
+      let yOne = y.toString(2)
+      let count = 0
+      let k = 0
+  
+      const xLen = xOne.length
+      const yLen = yOne.length
+      if(xLen - yLen > 0) {
+          for(let i = 0; i < (xLen - yLen) ;i++) {
+              yOne = '0' + yOne
+          }
+      }
+      if(xLen - yLen < 0) {
+          for(let i = 0; i < (yLen - xLen);i++) {
+              xOne = '0' + xOne
+          }
+      }
+  
+      while(k < xOne.length){
+          const xItem = xOne[k]
+          const yItem = yOne[k]
+          if (xItem !== yItem) {
+              count++
+          }
+          k++
+      }
+      return count
+  };
