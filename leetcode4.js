@@ -82,6 +82,38 @@ var getMinimumDifference = function(root) {
   };
 
   /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 给定一棵二叉树，你需要计算它的直径长度。
+// 一棵二叉树的直径长度是任意两个结点路径长度中的最大值。这条路径可能穿过也可能不穿过根结点。
+// 543. 二叉树的直径
+var diameterOfBinaryTree = function(root) {
+      let max = 1
+      const helper = (node) => {
+         if(!node) {
+             return 0
+         }
+         if(!node.left && !node.right) {
+             return 1
+         }
+         const left = helper(node.left)
+         const right = helper(node.right)
+         max = Math.max(max, left + right + 1)
+         return Math.max(left,right) + 1 
+      }
+      helper(root)
+      return max - 1
+   };
+
+  /**
  * // Definition for a Node.
  * function Node(val,children) {
  *    this.val = val;
