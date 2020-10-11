@@ -143,3 +143,34 @@ var maxDepth = function(root) {
   
       return 1 + Math.max(...result)
   };
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 563. 二叉树的坡度
+var findTilt = function(root) {
+
+      let total = 0
+    
+      function helper (node) {
+    
+        if(!node) {
+            return 0
+        }
+        const leftVal = helper(node.left)
+        const rightVal = helper(node.right)
+        total += Math.abs(leftVal - rightVal)
+        return leftVal + rightVal + node.val
+      }
+      helper(root)
+    
+      return total
+    };    
