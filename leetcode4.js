@@ -174,3 +174,35 @@ var findTilt = function(root) {
     
       return total
     };    
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} s
+ * @param {TreeNode} t
+ * @return {boolean}
+ */
+// 572. 另一个树的子树
+var isSubtree = function(s, t) {
+      function helper(node1, node2) {
+          if(!node1 && !node2) {
+              return true
+          }
+          if(!node1 && node2) {
+              return false
+          }
+          if(node1 && !node2) {
+              return false
+          }
+          return node1.val === node2.val && helper(node1.left,node2.left) && helper(node1.right,node2.right)
+      }
+      if (s == null) return false
+      if (helper(s, t)) return true
+      return isSubtree(s.left, t) || isSubtree(s.right, t) // 有一个true就true
+  
+  };
