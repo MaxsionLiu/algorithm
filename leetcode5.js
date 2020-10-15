@@ -110,3 +110,25 @@ var findTarget = function(root, k) {
      
       return  helper(root)
   };
+
+  /**
+ * @param {TreeNode} root
+ * @param {number} low
+ * @param {number} high
+ * @return {TreeNode}
+ */
+// 669. 修剪二叉搜索树
+var trimBST = function(root, low, high) {
+      if(!root) {
+          return null
+      }
+      if(low > root.val) {
+          return trimBST(root.right,low,high)
+      }
+      if(high < root.val) {
+          return trimBST(root.left,low,high)
+      }
+      root.left = trimBST(root.left, low, high)
+      root.right = trimBST(root.right, low, high)
+      return root
+  };
