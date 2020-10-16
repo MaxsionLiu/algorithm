@@ -132,3 +132,35 @@ var trimBST = function(root, low, high) {
       root.right = trimBST(root.right, low, high)
       return root
   };
+
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 671. 二叉树中第二小的节点
+var findSecondMinimumValue = function(root) {
+      if (root === null || (root.left === null && root.right === null)) return -1
+     
+      var left = root.left.val
+      var right = root.right.val
+
+      // 根节点是最小值，如果左节点跟根节点相同值，那有可能第二小值从左结点找
+      if (left === root.val) {
+            left = findSecondMinimumValue(root.left)
+      }
+      // 同理
+      if (right === root.val) {
+            right = findSecondMinimumValue(root.right)
+      }
+
+      // 这个时候左右节点的值都找到了，比较即可返回
+      if (left !== -1 && right !== -1) {
+            return Math.min(left, right)
+      }
+
+      if (left === -1) {
+            return right
+      }
+      return left
+};
