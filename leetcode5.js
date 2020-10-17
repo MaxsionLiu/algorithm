@@ -164,3 +164,28 @@ var findSecondMinimumValue = function(root) {
       }
       return left
 };
+
+/**
+ * @param {TreeNode} root
+ * @param {number} val
+ * @return {TreeNode}
+ */
+// 700. 二叉搜索树中的搜索
+var searchBST = function(root, val) {
+      if(!root) {
+          return null
+      } 
+      const left = searchBST(root.left,val)
+      if (left) {
+          return left
+      }
+      if(root.val === val) {
+          return root
+      }
+      const right = searchBST(root.right,val)
+      if(right) {
+          return right
+      }
+   
+      return null
+   };
