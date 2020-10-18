@@ -25,3 +25,31 @@ var minDiffInBST = function(root) {
   
       return min
   };
+
+  /**
+ * @param {TreeNode} root1
+ * @param {TreeNode} root2
+ * @return {boolean}
+ */
+// 872. 叶子相似的树
+var leafSimilar = function(root1, root2) {
+    
+      function helper(node,arr) {
+          if(!node.left && !node.right) {
+             arr.push(node.val)
+          }
+          if(node.left) {
+              helper(node.left,arr)
+          }
+          if(node.right) {
+              helper(node.right,arr)
+          }
+      }
+  
+      let arr1 = []
+      helper(root1,arr1)
+      let arr2 = []
+      helper(root2,arr2)
+  
+      return arr1.toString() === arr2.toString()
+  };
