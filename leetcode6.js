@@ -53,3 +53,35 @@ var leafSimilar = function(root1, root2) {
   
       return arr1.toString() === arr2.toString()
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+// 897. 递增顺序查找树
+var increasingBST = function(root) {
+      let turnNode = null
+      let nextNode = null
+      function helper(node) {
+         if(!node) {
+             return
+         }
+         if(node.left) {
+             helper(node.left)
+         }
+         if(!turnNode) {
+            turnNode = new TreeNode(node.val)
+            nextNode = turnNode
+         } else {
+            let temp = new TreeNode(node.val)
+            nextNode.right = temp
+            nextNode = temp
+         }
+         if(node.right) {
+             helper(node.right)
+         }
+      }
+      helper(root)
+  
+      return turnNode
+  };
