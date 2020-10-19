@@ -17,3 +17,28 @@ var rangeSumBST = function(root, L, R) {
   
       return result
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+// 965. 单值二叉树
+var isUnivalTree = function(root) {
+      let temp = root.val
+      let stack = [root]
+      while(stack.length > 0) {
+          const node = stack.pop()
+          if(node.val !== temp) {
+              return false
+          }
+          if(node.left) {
+              stack.push(node.left)
+          }
+          if(node.right) {
+              stack.push(node.right)
+          }
+      }
+  
+  
+      return true
+  };
