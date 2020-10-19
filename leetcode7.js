@@ -42,3 +42,35 @@ var isUnivalTree = function(root) {
   
       return true
   };
+
+  //  993. 二叉树的堂兄弟节点
+  var isCousins = function(root, x, y) {
+      let xHeight = 0
+      let yHeight = 0
+  
+      let queue = [root]
+      let count = 0
+      let hashObj = {}
+      while(queue.length > 0) {
+          const len = queue.length
+          for(let i = 0; i < len; i++) {
+              const node = queue.shift()
+              if(node.val === x) {
+                  xHeight = count
+              }
+              if(node.val === y) {
+                  yHeight = count
+              }
+              if(node.left) {
+                  hashObj[node.left.val] = node.val
+                  queue.push(node.left)
+              }
+              if(node.right) {
+                  hashObj[node.right.val] = node.val
+                  queue.push(node.right)
+              }
+          }
+          count++
+      }
+      return xHeight === yHeight && hashObj[x] !== hashObj[y]
+  };
