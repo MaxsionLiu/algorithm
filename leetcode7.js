@@ -74,3 +74,29 @@ var isUnivalTree = function(root) {
       }
       return xHeight === yHeight && hashObj[x] !== hashObj[y]
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 1022. 从根到叶的二进制数之和
+var sumRootToLeaf = function(root) {
+      let arr = []
+      function helper(node,val) {
+          if(!node) {
+              return
+          }
+          if(!node.left && !node.right) {
+              arr.push(val + '' + node.val)
+          }else {
+              helper(node.left, val + node.val)
+              helper(node.right, val + node.val)
+          }
+      }
+      helper(root,'')
+      let result = 0
+      for(const n of arr) {
+          result += parseInt(n,2)
+      }
+      return result
+  };
