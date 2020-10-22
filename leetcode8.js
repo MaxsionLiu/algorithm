@@ -34,3 +34,27 @@ var isSymmetric = function(root) {
       }
       return helper(root.left,root.right)
   };
+
+/**
+ * @param {TreeNode} root
+ * @param {number} k
+ * @return {number}
+ */
+// 剑指 Offer 54. 二叉搜索树的第k大节点
+var kthLargest = function(root, k) {
+      let arr = []
+      function helper(node) {
+         if(!node) {
+             return
+         }
+         if(node.right) {
+             helper(node.right)
+         }
+         arr.push(node.val)
+        if(node.left) {
+             helper(node.left)
+         }
+      }
+      helper(root)
+      return arr[k-1]
+  };
