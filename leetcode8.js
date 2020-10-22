@@ -58,3 +58,23 @@ var kthLargest = function(root, k) {
       helper(root)
       return arr[k-1]
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+// 剑指 Offer 55 - II. 平衡二叉树
+var isBalanced = function(root) {
+      if(!root) {
+          return true
+      }
+      function helper(node) {
+          if(!node) {
+              return 1
+          }
+  
+          return Math.max(helper(node.left), helper(node.right)) + 1
+      }
+  
+      return  Math.abs(helper(root.left) - helper(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right)
+  };
