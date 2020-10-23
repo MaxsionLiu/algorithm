@@ -108,3 +108,19 @@ var sortedArrayToBST = function(nums) {
 
       return node
 };
+
+// 面试题 04.04. 检查平衡性
+var isBalanced = function(root) {
+      if(!root) {
+          return true
+      }
+  
+      function helper(node) {
+          if(!node) {
+              return 0
+          }
+          return Math.max(helper(node.left),helper(node.right)) + 1
+      }
+  
+      return Math.abs(helper(root.left) - helper(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right)
+  };
