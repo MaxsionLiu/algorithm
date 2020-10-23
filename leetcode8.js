@@ -78,3 +78,33 @@ var isBalanced = function(root) {
   
       return  Math.abs(helper(root.left) - helper(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right)
   };
+
+/**
+ * @param {number[]} nums
+ * @return {TreeNode}
+ */
+// 面试题 04.02. 最小高度树
+var sortedArrayToBST = function(nums) {
+
+      if(nums.length === 0) {
+          return null
+      }
+
+      if(nums.length === 1) {
+          return new TreeNode(nums[0])
+      }
+
+      if(nums.length === 2) {
+          const node =  new TreeNode(nums[1])
+          node.left = new TreeNode(nums[0])
+          return node
+      }
+
+ 
+      const mid = parseInt(nums.length / 2)
+      let node = new TreeNode(nums[mid])
+      node.left =  sortedArrayToBST(nums.slice(0,mid))
+      node.right =  sortedArrayToBST(nums.slice(mid + 1))
+
+      return node
+};
