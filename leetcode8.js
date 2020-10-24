@@ -124,3 +124,30 @@ var isBalanced = function(root) {
   
       return Math.abs(helper(root.left) - helper(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right)
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+// 面试题 17.12. BiNode
+var convertBiNode = function(root) {
+    
+      let head = new TreeNode(-1)
+      let pre = head
+      function helper(node) {
+          if(!node) {
+              return
+          }
+          helper(node.left)
+          visit(node)
+          helper(node.right)
+      }
+      function visit(node) {
+          node.left = null
+          pre.right = node
+          pre = node
+      }
+      helper(root)
+   
+      return head.right
+  };
