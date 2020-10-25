@@ -1,4 +1,26 @@
 /**
+ * @param {number[]} preorder
+ * @param {number[]} inorder
+ * @return {TreeNode}
+ */
+// 剑指 Offer 07. 重建二叉树
+var buildTree = function(preorder, inorder) {
+      if(preorder.length === 0 || inorder.length === 0){
+          return null
+      }
+      let i = 0
+      for(; i < inorder.length;i++) {
+          if(preorder[0] === inorder[i]) {
+              break
+          }
+      }
+ 
+      let node = new TreeNode(preorder[0])
+      node.left = buildTree(preorder.slice(1,i+1),inorder.slice(0,i))
+      node.right = buildTree(preorder.slice(i+1),inorder.slice(i+1))
+      return node
+ };
+/**
  * @param {TreeNode} root
  * @return {TreeNode}
  */
