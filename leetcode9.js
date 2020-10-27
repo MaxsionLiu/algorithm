@@ -51,3 +51,28 @@ var longestMountain = function(A) {
   
       return result.length
   };
+
+  /**
+ * @param {TreeNode} A
+ * @param {TreeNode} B
+ * @return {boolean}
+ */
+// 剑指 Offer 26. 树的子结构
+var isSubStructure = function(A, B) {
+
+      if(!A || !B) {
+          return false;
+      }
+  
+      function helper(A1,B1) {
+          if(!B1) {
+              return true
+          }
+          if(!A1) {
+              return false
+          }
+          return A1.val === B1.val && helper(A1.left,B1.left) && helper(A1.right,B1.right)
+      }
+  
+      return helper(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B)
+  };
