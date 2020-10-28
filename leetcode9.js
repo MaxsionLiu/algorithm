@@ -76,3 +76,30 @@ var isSubStructure = function(A, B) {
   
       return helper(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B)
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+// 剑指 Offer 32 - I. 从上到下打印二叉树
+var levelOrder = function(root) {
+      if(!root) {
+          return []
+      }
+      let stack = [root]
+      let result = []
+      while(stack.length > 0) {
+          let len = stack.length
+          for(let i = 0; i < len; i++) {
+              const node = stack.shift()
+              result.push(node.val)
+              if(node.left) {
+                  stack.push(node.left)
+              }
+              if(node.right) {
+                  stack.push(node.right)
+              }
+          }
+      }
+      return result
+  };
