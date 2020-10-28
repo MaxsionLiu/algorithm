@@ -103,3 +103,37 @@ var levelOrder = function(root) {
       }
       return result
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+// 剑指 Offer 32 - III. 从上到下打印二叉树 III
+var levelOrder = function(root) {
+      if(!root) {
+          return []
+      }
+      let stack = [root]
+      let result = []
+      let odd = true
+      while(stack.length > 0) {
+          const len = stack.length
+          let temp = []
+          for(let i = 0; i < len; i++) {
+              const node = stack.shift()
+              temp.push(node.val)
+              if(node.left) {
+                  stack.push(node.left)
+              }
+              if(node.right) {
+                  stack.push(node.right)
+              }
+          }
+          if(!odd) {
+              temp = temp.reverse()
+          }
+          result.push(temp)
+          odd = !odd
+      }
+      return result
+   };
