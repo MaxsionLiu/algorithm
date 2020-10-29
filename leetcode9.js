@@ -137,3 +137,37 @@ var levelOrder = function(root) {
       }
       return result
    };
+
+/**
+ * @param {TreeNode} root
+ * @param {number} sum
+ * @return {number[][]}
+ */
+// 剑指 Offer 34. 二叉树中和为某一值的路径
+var pathSum = function(root, sum) {
+      if(!root) {
+          return []
+      }
+      // 一个值是否等于一个节点的值
+      // 如果一个节点为空则返回
+      // 如果等于则将临时数组加入总数组
+      // 如果不等于则递归调用
+      //root.left, sum - root.val
+      //root.right, sum - root.val
+      let result = []
+      let temp = [] 
+      function help(node, num) {
+          if(!node){
+              return
+          }
+          temp.push(node.val)
+          if(node.val === num && !node.left && !node.right) {
+              result.push([...temp])
+          }
+          help(node.left, num - node.val)
+          help(node.right, num - node.val,temp)
+          temp.pop()
+      }
+      help(root,sum) 
+      return result
+  };
