@@ -202,3 +202,39 @@ var listOfDepth = function(tree) {
       }
       return result
    };
+
+   /**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+// 面试题 04.05. 合法二叉搜索树
+var isValidBST = function(root) {
+      if(!root) {
+          return true
+      }
+      let temp = -Infinity
+      let result = true
+      function helper(node) {
+          if(!node) {
+             return
+          } 
+  
+          if(node.left) {
+             helper(node.left)
+          }
+         
+          if(node.val > temp) {
+             temp = node.val
+          } else {
+             result = false
+             return
+          }
+  
+          if(node.right) {
+             helper(node.right)
+          }
+      }
+      helper(root)
+  
+      return result
+  };
