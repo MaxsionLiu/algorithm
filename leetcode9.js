@@ -171,3 +171,34 @@ var pathSum = function(root, sum) {
       help(root,sum) 
       return result
   };
+
+  /**
+ * @param {TreeNode} tree
+ * @return {ListNode[]}
+ */
+// 面试题 04.03. 特定深度节点链表
+var listOfDepth = function(tree) {
+      if(!tree) {
+          return []
+      }
+      let result = []
+      let stack = [tree]
+      while(stack.length > 0 ) {
+          const len = stack.length
+          let tempNode = new ListNode(-1)
+          let curr = tempNode
+          for(let i = 0; i < len; i++) {
+              const node = stack.shift()
+              curr.next = new ListNode(node.val)
+              curr = curr.next
+              if(node.left) {
+                  stack.push(node.left)
+              }
+              if(node.right) {
+                  stack.push(node.right)
+              }
+          }
+          result.push(tempNode.next)
+      }
+      return result
+   };
