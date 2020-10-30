@@ -289,3 +289,25 @@ var lowestCommonAncestor = function(root, p, q) {
           //我们只需要返回root结点即可。
           return root;
   };
+
+  /**
+ * @param {TreeNode} t1
+ * @param {TreeNode} t2
+ * @return {boolean}
+ */
+// 面试题 04.10. 检查子树
+var checkSubTree = function(t1, t2) {
+      if(t1==null&&t2==null)    return true;
+      else if(t1==null || t2 == null)    return false;
+        //当两节点值相同可开始进行对比
+        if(t1.val==t2.val){
+            const left = checkSubTree(t1.left,t2.left);
+            const right = checkSubTree(t1.right,t2.right);
+            return left && right;
+        }else{
+            //两节点值不同，t1继续寻找
+            const left = checkSubTree(t1.left,t2);
+            const right = checkSubTree(t1.right,t2);
+            return left||right;            
+        }
+};
