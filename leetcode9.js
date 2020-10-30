@@ -238,3 +238,31 @@ var isValidBST = function(root) {
   
       return result
   };
+
+/**
+ * @param {TreeNode} root
+ * @param {TreeNode} p
+ * @return {TreeNode}
+ */
+// 面试题 04.06. 后继者
+var inorderSuccessor = function(root, p) {
+      if(!root || !p) {
+          return false
+      }
+      let result = []
+      function helper(node) {
+        if(!node) {
+            return
+        }
+        if(node.left) {
+            helper(node.left)
+        }
+        result.push(node)
+        if(node.right) {
+            helper(node.right)
+        }
+      }
+      helper(root)
+      const index =  result.findIndex( item => item.val === p.val)
+      return index === (result.length - 1) ? null : result[index + 1]
+  };
