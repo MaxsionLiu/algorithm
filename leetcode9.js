@@ -266,3 +266,26 @@ var inorderSuccessor = function(root, p) {
       const index =  result.findIndex( item => item.val === p.val)
       return index === (result.length - 1) ? null : result[index + 1]
   };
+
+  /**
+ * @param {TreeNode} root
+ * @param {TreeNode} p
+ * @param {TreeNode} q
+ * @return {TreeNode}
+ */
+// 面试题 04.08. 首个共同祖先
+var lowestCommonAncestor = function(root, p, q) {
+      if (root == null || root == p || root == q)
+              return root;
+          const left = lowestCommonAncestor(root.left, p, q);
+          const right = lowestCommonAncestor(root.right, p, q);
+          //如果left为空，说明这两个节点在root结点的右子树上，我们只需要返回右子树查找的结果即可
+          if (left == null)
+              return right;
+          //同上
+          if (right == null)
+              return left;
+          //如果left和right都不为空，说明这两个节点一个在root的左子树上一个在root的右子树上，
+          //我们只需要返回root结点即可。
+          return root;
+  };
