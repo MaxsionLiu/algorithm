@@ -411,3 +411,27 @@ var insertIntoBST = function(root, val) {
       // }
       // return root;
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+// 814. 二叉树剪枝
+var pruneTree = function(root) {
+      function helper(node) {
+          if(!node) {
+              return null
+          }
+  
+          // 则分别对左/右子树剪枝(递归)
+          node.left = helper(node.left)
+          node.right = helper(node.right)
+  
+          // 如果剪枝后发现左右节点都是null 并且当前值为0的话返回null 否则返回
+          if(!node.val && !node.left && !node.right) {
+              return null
+          }
+          return node
+      }
+      return helper(root)
+  };
