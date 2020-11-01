@@ -350,3 +350,64 @@ var longestUnivaluePath = function(root) {
       univaluePath(root)
       return res
     };
+
+/**
+ * @param {TreeNode} root
+ * @param {number} val
+ * @return {TreeNode}
+ */
+// 701. 二叉搜索树中的插入操作
+var insertIntoBST = function(root, val) {
+      // 遍历二叉搜索树
+      // 如果此节点为空则返回要插入的节点
+      // 否则 根据插入值判断是插入的是左子树或者是右子树
+      // 如果左子树/或者右子树为空则new一个左子树/右子树
+      // 否则的话 转化为左子树或者右子树
+  
+      if(!root) {
+          return new TreeNode(val)
+      }
+  
+      function helper(node) {
+          if(node.val > val) {
+              if(node.left) {
+                 helper(node.left)
+              } else {
+                 node.left = new TreeNode(val) 
+                 return 
+              }
+          } else {
+              if(node.right) {
+                 helper(node.right)
+              } else {
+                  node.right = new TreeNode(val)
+                  return 
+              }
+          }
+      }
+      helper(root)
+      return root
+  
+      // if (root === null) {
+      //     return new TreeNode(val);
+      // }
+      // let pos = root;
+      // while (pos !== null) {
+      //     if (val < pos.val) {
+      //         if (pos.left === null) {
+      //             pos.left = new TreeNode(val);
+      //             break;
+      //         } else {
+      //             pos = pos.left;
+      //         }
+      //     } else {
+      //         if (pos.right === null) {
+      //             pos.right = new TreeNode(val);
+      //             break;
+      //         } else {
+      //             pos = pos.right;
+      //         }
+      //     }
+      // }
+      // return root;
+  };
