@@ -454,3 +454,21 @@ var constructFromPrePost = function(pre, post) {
       root.right = constructFromPrePost(pre.slice(index+2),post.slice(index+1,post.length-1));
       return root;
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 979. 在二叉树中分配硬币
+var distributeCoins = function(root) {
+      let path = 0; 
+      let helper = function(node){
+            if(node == null) return 0;
+            let leftVal = helper(node.left);
+            let rightVal = helper(node.right);
+            path += Math.abs(rightVal)+Math.abs(leftVal);
+            return rightVal+leftVal+node.val-1;
+      }
+      helper(root);
+      return path;
+};
