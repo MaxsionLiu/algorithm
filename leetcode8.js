@@ -173,3 +173,25 @@ var convertBiNode = function(root) {
    
       return head.right
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+// 1123. 最深叶节点的最近公共祖先
+var lcaDeepestLeaves = function(root) {
+      let res = root;
+      let maxDepth = 0;
+      let dfs = function (root, depth) {
+        if (!root) return depth - 1;
+        let leftDepth = dfs(root.left, depth + 1)
+        let rightDepth = dfs(root.right, depth + 1)
+        maxDepth = Math.max(maxDepth, leftDepth, rightDepth)
+        if (leftDepth === maxDepth && rightDepth === maxDepth) {
+          res = root;
+        }
+        return Math.max(leftDepth, rightDepth);
+      }
+      dfs(root, 0);
+      return res;
+    };
