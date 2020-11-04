@@ -472,3 +472,24 @@ var distributeCoins = function(root) {
       helper(root);
       return path;
 };
+
+/**
+ * @param {number[]} preorder
+ * @return {TreeNode}
+ */
+// 1008. 前序遍历构造二叉搜索树
+var bstFromPreorder = function(preorder) {
+      if(!preorder.length) {
+          return null
+      }
+      let node = new TreeNode(preorder[0])
+      const index = preorder.findIndex(item => item > preorder[0])
+  
+      if(index !== -1) {
+          node.left = bstFromPreorder(preorder.slice(1,index))
+          node.right = bstFromPreorder(preorder.slice(index))
+      } else {
+          node.left = bstFromPreorder(preorder.slice(1))
+      }
+      return node
+  }
