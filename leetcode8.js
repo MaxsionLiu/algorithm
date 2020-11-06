@@ -195,3 +195,34 @@ var lcaDeepestLeaves = function(root) {
       dfs(root, 0);
       return res;
     };
+
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+// 103. 二叉树的锯齿形层次遍历
+var zigzagLevelOrder = function(root) {
+      if(!root) {
+         return []
+      }
+      let result = []
+      let stack = [root]
+      let odd = true
+      while(stack.length > 0) {
+         const len = stack.length
+         let temp = []
+         for(let i = 0; i < len; i++) {
+             const item = stack.shift()
+             odd ? temp.push(item.val) : temp.unshift(item.val)
+             if(item.left) {
+                 stack.push(item.left)
+             }
+             if(item.right) {
+                 stack.push(item.right)
+             }
+         }
+         odd = !odd
+         result.push(temp)
+      }
+      return result
+ };
