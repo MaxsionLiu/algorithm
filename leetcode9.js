@@ -493,3 +493,25 @@ var bstFromPreorder = function(preorder) {
       }
       return node
   }
+
+  /**
+ * @param {number[]} preorder
+ * @param {number[]} inorder
+ * @return {TreeNode}
+ */
+// 105. 从前序与中序遍历序列构造二叉树
+var buildTree = function(preorder, inorder) {
+      if(!preorder.length || !inorder.length) {
+          return null
+      }
+  
+      const nodeVal = preorder[0]
+      let node = new TreeNode(nodeVal)
+      const idx = inorder.findIndex(item => item === nodeVal)
+      if(idx !== -1) {
+          const len = inorder.slice(0,idx).length
+          node.left = buildTree(preorder.slice(1,1 + len),inorder.slice(0,idx))
+          node.right = buildTree(preorder.slice(1 + len),inorder.slice(idx+1))
+      }
+      return node
+  };
