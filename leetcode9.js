@@ -515,3 +515,21 @@ var buildTree = function(preorder, inorder) {
       }
       return node
   };
+
+  /**
+ * @param {number[]} inorder
+ * @param {number[]} postorder
+ * @return {TreeNode}
+ */
+// 106. 从中序与后序遍历序列构造二叉树
+var buildTree = function(inorder, postorder) {
+      if(!inorder.length || !postorder.length) {
+         return null
+      }
+      const val = postorder.pop()
+      const idx = inorder.findIndex(item => item === val)
+      let node = new TreeNode(val)
+      node.left = buildTree(inorder.slice(0,idx),postorder.slice(0,idx))
+      node.right = buildTree(inorder.slice(idx+1),postorder.slice(idx))
+      return node
+  };
