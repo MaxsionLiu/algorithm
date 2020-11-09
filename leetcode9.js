@@ -533,3 +533,28 @@ var buildTree = function(inorder, postorder) {
       node.right = buildTree(inorder.slice(idx+1),postorder.slice(idx))
       return node
   };
+
+/**
+ * @param {TreeNode} root
+ * @param {number} sum
+ * @return {number[][]}
+ */
+// 113. 路径总和 II
+var pathSum = function(root, sum) {
+      let result = []
+      let temp = []
+      function helper(node, n) {
+           if(!node) {
+               return
+           }
+           temp.push(node.val)
+           if(!node.left && !node.right && node.val === n) {
+               result.push(JSON.parse(JSON.stringify(temp)))
+           } 
+           helper(node.left, n - node.val)
+           helper(node.right, n - node.val)
+           temp.pop()
+      }
+      helper(root, sum)
+      return result
+   };
