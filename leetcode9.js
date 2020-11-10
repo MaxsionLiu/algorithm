@@ -558,3 +558,28 @@ var pathSum = function(root, sum) {
       helper(root, sum)
       return result
    };
+
+
+   /**
+ * @param {TreeNode} root
+ * @return {void} Do not return anything, modify root in-place instead.
+ */
+// 114. 二叉树展开为链表
+var flatten = function(root) {
+      let list = []
+      function helper(node) {
+          if(!node) {
+              return
+          }
+          list.push(node)
+          helper(node.left)
+          helper(node.right)
+      }
+      helper(root)
+      for(let i = 1; i < list.length; i++) {
+          let pre = list[i-1]
+          let curr = list[i]
+          pre.left = null
+          pre.right = curr
+      }
+  };
