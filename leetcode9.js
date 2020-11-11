@@ -590,19 +590,23 @@ var flatten = function(root) {
  */
 // 145. 二叉树的后序遍历
 var postorderTraversal = function(root) {
-      let nums = [];
-      let stack = [];
-      if (root) stack.push(root);
-      while (stack.length) {
-          root = stack.pop();
-          if (root) {
-              stack.push(root);
-              stack.push(null);
-              root.right && stack.push(root.right);
-              root.left && stack.push(root.left);
-          } else {
-              nums.push(stack.pop().val);
-          }
+      if(!root) {
+            return []
       }
-      return nums;
+      let result = []
+      let stack = [root]
+      while(stack.length > 0){
+      const len = stack.length
+      for(let i = 0; i < len; i++) {
+            const node = stack.pop()
+            result.unshift(node.val)
+            if(node.left) {
+                  stack.push(node.left)
+            }
+            if(node.right) {
+                  stack.push(node.right)
+            }
+      }
+      }
+      return result
   };
