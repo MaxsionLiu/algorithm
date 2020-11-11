@@ -583,3 +583,32 @@ var flatten = function(root) {
           pre.right = curr
       }
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+// 145. 二叉树的后序遍历
+var postorderTraversal = function(root) {
+      let result = []
+      const stack = [];
+      let p = root, pre = null;
+      while (stack.length || p) {
+          if (p) {
+              stack.push(p)
+              p = p.left;
+          } else {
+              p = stack.pop();
+              if (!p.right || p.right === pre) {//没有右子树或刚访问过右子树
+                  result.push(p.val);
+                  pre = p
+                  p = null;
+              } else {//有右子树并且没有访问
+                  stack.push(p);
+                  stack.push(p.right);//右子树入栈
+                  p = p.right.left;//转向右子树的左子树
+              }
+          }
+      }
+      return result
+  };
