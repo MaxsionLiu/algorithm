@@ -559,7 +559,32 @@ var pathSum = function(root, sum) {
       return result
    };
 
-
+/**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+// 144. 二叉树的前序遍历
+var preorderTraversal = function(root) {
+      if(!root) {
+          return []
+      }
+      let result = []
+      let stack = [root]
+      while(stack.length > 0) {
+          const len = stack.length
+          for(let i = 0; i < len; i++) {
+             const node = stack.pop()
+             result.push(node.val)
+             if(node.right) {
+               stack.push(node.right)
+             }
+             if(node.left) {
+               stack.push(node.left)
+             }
+          }
+      } 
+      return result
+};
    /**
  * @param {TreeNode} root
  * @return {void} Do not return anything, modify root in-place instead.
