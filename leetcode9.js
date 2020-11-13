@@ -635,3 +635,29 @@ var postorderTraversal = function(root) {
       }
       return result.reverse()
   };
+
+  /**
+ * @param {Node} root
+ * @return {number[][]}
+ */
+// 429. N叉树的层序遍历
+var levelOrder = function(root) {
+      if(!root) {
+          return []
+      }
+      let result = []
+      let queue = [root]
+      while(queue.length > 0) {
+         let temp = []
+         const len = queue.length
+         for(let i = 0; i < len; i++) {
+             const node = queue.shift()
+             temp.push(node.val)
+             for(const child of node.children) {
+                 queue.push(child)
+             }
+         }
+         result.push(temp)
+      } 
+      return result
+  };
