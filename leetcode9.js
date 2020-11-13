@@ -661,3 +661,35 @@ var levelOrder = function(root) {
       } 
       return result
   };
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 129. 求根到叶子节点数字之和
+var sumNumbers = function(root) {
+      let result = []
+      
+      function helper(node,str) {
+  
+         if(!node) {
+            return
+         }
+         str += node.val
+         if(node.left && node.right) {
+           helper(node.left, str)
+           helper(node.right, str)
+         }else if(node.left && !node.right) {
+           helper(node.left, str)
+         }else if(!node.left && node.right){
+           helper(node.right, str)
+         } else {
+           result.push(str)
+         }
+  
+      }
+      helper(root,'')
+      return result.reduce((pre,curr) => {
+          return pre + parseInt(curr)
+      },0)
+  };
