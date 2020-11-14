@@ -26,3 +26,25 @@ var rightSideView = function(root) {
       }
       return result
    };
+
+
+   /**
+ * @param {TreeNode} root
+ * @param {number} k
+ * @return {number}
+ */
+// 230. 二叉搜索树中第K小的元素
+var kthSmallest = function(root, k) {
+      let result = []
+      const helper = (node) => { 
+         if(node.left) {
+           helper(node.left)
+         }
+         result.push(node.val)
+         if(node.right) {
+           helper(node.right)
+         }
+      }
+      helper(root)
+      return result[k-1]
+  };
