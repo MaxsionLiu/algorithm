@@ -70,37 +70,35 @@ var lowestCommonAncestor = function(root, p, q) {
       return left ? left : right;
   };
 
-  /**
+/**
  * @param {number[]} nums
  * @return {TreeNode}
  */
+// 654. 最大二叉树
 var constructMaximumBinaryTree = function(nums) {
 
-      function helper(nums, left, right) {
-           if (left === right) {
-               return null
-           }
-           let idx = max(nums,left,right)
-           let node = new TreeNode(temp)
-   
-           node.left = helper(nums, left,idx)
-           node.right = helper(nums, idx, right)
-           return node
+      function helper(left, right) {
+  
+          if (left === right) {
+              return null
+          }
+          const idx = max(left,right)
+          let node = new TreeNode(nums[idx])
+  
+          node.left = helper(left,idx)
+          node.right = helper(idx + 1, right)
+          return node
       }
-      function max(nums, l,r) {
-           let max_i = l;
-           for (let i = l; i < r; i++) {
-               if (nums[max_i] < nums[i]) {
-                   max_i = i;
-               }
-           }
-           return max_i;
+  
+      function max(l,r) {
+          let maxIdx = l;
+          for (let i = l; i < r; i++) {
+              if (nums[maxIdx] < nums[i]) {
+                  maxIdx = i;
+              }
+          }
+          return maxIdx;
       }
-      console.log('nums', nums)
-      console.log('nums.length', nums.length)
-         console.log('nums.length=== 0', nums.length=== 0)
-   
-   
-   
-      return node
-   };
+  
+      return helper(0, nums.length)
+};
