@@ -158,3 +158,27 @@ var largestValues = function(root) {
       }
       return result
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+// 538. 把二叉搜索树转换为累加树
+var convertBST = function(root) {
+      if(!root) {
+          return null
+      }
+      let sum = 0
+      function helper(node) {
+          if(!node) {
+              return 0
+          }
+          helper(node.right)
+          node.val =  sum + node.val
+          sum = node.val
+          helper(node.left)
+          return node
+      }
+  
+      return helper(root)
+  };
