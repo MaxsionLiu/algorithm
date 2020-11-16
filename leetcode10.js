@@ -127,3 +127,34 @@ var findBottomLeftValue = function(root) {
       }
       return result[0]
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+// 515. 在每个树行中找最大值
+var largestValues = function(root) {
+      if(!root) {
+          return []
+      }
+      let result = []
+      let queue = [root]
+      while(queue.length > 0) {
+          const len = queue.length
+          let max = -Infinity
+          for(let i = 0; i < len; i++) {
+              const node = queue.shift()
+              if(node.val > max) {
+                 max = node.val
+              }
+              if(node.left) {
+                  queue.push(node.left)
+              }
+              if(node.right) {
+                  queue.push(node.right)
+              }
+          }
+          result.push(max) 
+      }
+      return result
+  };
