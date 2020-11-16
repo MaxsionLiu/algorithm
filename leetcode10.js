@@ -102,3 +102,28 @@ var constructMaximumBinaryTree = function(nums) {
   
       return helper(0, nums.length)
 };
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 513. 找树左下角的值
+var findBottomLeftValue = function(root) {
+      let result = []
+      let queue = [root]
+      while(queue.length > 0) {
+          const len = queue.length
+          result = []
+          for(let i = 0; i < len; i++) {
+              const node = queue.shift()
+              result.push(node.val)
+              if(node.left) {
+                  queue.push(node.left)
+              }
+              if(node.right) {
+                  queue.push(node.right)
+              }
+          }
+      }
+      return result[0]
+  };
