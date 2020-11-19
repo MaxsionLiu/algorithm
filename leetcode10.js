@@ -237,3 +237,31 @@ var distanceK = function(root, target, k) {
   
       return res;
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 1302. 层数最深叶子节点的和
+var deepestLeavesSum = function(root) {
+      if(!root) {
+          return 0
+      }
+      let result = []
+      let queue = [root]
+      while(queue.length > 0) {
+          const len = queue.length
+          result = []
+          for(let i = 0; i < len; i++) {
+             const node = queue.shift()
+             result.push(node.val)
+             if(node.left) {
+                 queue.push(node.left)
+             }
+             if(node.right) {
+                 queue.push(node.right)
+             }
+          }
+      }
+      return result.reduce((pre,curr) => pre + curr)
+ };
