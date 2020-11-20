@@ -265,3 +265,35 @@ var deepestLeavesSum = function(root) {
       }
       return result.reduce((pre,curr) => pre + curr)
  };
+
+ /**
+ * @param {TreeNode} root1
+ * @param {TreeNode} root2
+ * @return {number[]}
+ */
+// 1305. 两棵二叉搜索树中的所有元素
+ var getAllElements = function(root1, root2) {
+      let num1 = []
+      let num2 = []
+      function helper(node,num) {
+         if(!node) {
+             return
+         } 
+         helper(node.left,num)
+         num.push(node.val)
+         helper(node.right,num)
+      }
+      helper(root1,num1)
+      helper(root2,num2)
+      let result = []
+      let i = 0;
+      let j = 0
+      while(i < num1.length || j < num2.length) {
+            if (i < num1.length && (j == num2.length || num1[i] <= num2[j])) {
+               result.push(num1[i++]);
+            } else {
+               result.push(num2[j++]);
+            }
+      }
+      return result 
+ };
