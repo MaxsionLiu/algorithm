@@ -297,3 +297,37 @@ var deepestLeavesSum = function(root) {
       }
       return result 
  };
+
+ /**
+ * @param {ListNode} head
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+// 1367. 二叉树中的列表
+ var isSubPath = function(head, root) {
+      function helper(head,node) {
+           //特判：链表走完了，返回true
+          if (head == null) {
+              return true;
+          }
+          //特判：链表没走完，树走完了，这肯定不行，返回false
+          if (node == null) {
+              return false;
+          }
+          //如果值不同，必定不是啊
+          if (head.val != node.val) {
+              return false;
+          }
+          //如果值相同，继续看，左边和右边有一个满足即可
+          return helper(head.next, node.left) || helper(head.next, node.right);
+      }
+  
+      if(!head) {
+          return true
+      }
+      if(!root) {
+          return false
+      }
+  
+      return helper(head,root) || isSubPath(head,root.left) || isSubPath(head,root.right)
+  };
