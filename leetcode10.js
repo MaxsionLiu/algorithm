@@ -381,3 +381,38 @@ var sumEvenGrandparent = function(root) {
           return sumEvenGrandparent(root.left) + sumEvenGrandparent(root.right)
       }
   };
+
+  /**
+ * @param {TreeNode} root
+ */
+var BSTIterator = function(root) {
+      let arr = []
+      function helper(node) {
+        if(!node) {
+            return
+        }
+        helper(node.left)
+        arr.push(node.val)
+        helper(node.right)
+      }
+      helper(root)
+      this.index = 0
+      this.arr = arr
+  };
+
+  /**
+ * @return the next smallest number
+ * @return {number}
+ */
+// 173. 二叉搜索树迭代器
+BSTIterator.prototype.next = function() {
+      return this.arr[this.index++]
+   };
+   
+/**
+ * @return whether we have a next smallest number
+ * @return {boolean}
+ */
+BSTIterator.prototype.hasNext = function() {
+return  typeof this.arr[this.index] !== 'undefined'
+};
