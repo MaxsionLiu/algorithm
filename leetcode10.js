@@ -348,3 +348,36 @@ var getTargetCopy = function(original, cloned, target) {
       }
       return getTargetCopy(original.left,cloned.left,target) || getTargetCopy(original.right,cloned.right,target)
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 1315. 祖父节点值为偶数的节点和
+var sumEvenGrandparent = function(root) {
+      if(!root) {
+          return 0
+      }
+      function helper(node) {
+          let num = 0
+          if(node.left && node.left.left) {
+             num += node.left.left.val
+          }
+          if(node.left && node.left.right) {
+             num += node.left.right.val
+          }
+          if(node.right && node.right.left) {
+             num += node.right.left.val
+          }
+          if(node.right && node.right.right) {
+             num += node.right.right.val
+          }
+          return num
+      }
+      if(root.val % 2 === 0) {
+          let left = helper(root)
+          return left + sumEvenGrandparent(root.left) + sumEvenGrandparent(root.right)
+      } else {
+          return sumEvenGrandparent(root.left) + sumEvenGrandparent(root.right)
+      }
+  };
