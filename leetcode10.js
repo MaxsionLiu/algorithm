@@ -331,3 +331,20 @@ var deepestLeavesSum = function(root) {
   
       return helper(head,root) || isSubPath(head,root.left) || isSubPath(head,root.right)
   };
+
+  /**
+ * @param {TreeNode} original
+ * @param {TreeNode} cloned
+ * @param {TreeNode} target
+ * @return {TreeNode}
+ */
+// 1379. 找出克隆二叉树中的相同节点
+var getTargetCopy = function(original, cloned, target) {
+      if(!original) {
+          return null
+      }
+      if(original === target) {
+          return cloned
+      }
+      return getTargetCopy(original.left,cloned.left,target) || getTargetCopy(original.right,cloned.right,target)
+  };
