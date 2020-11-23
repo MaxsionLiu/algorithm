@@ -425,3 +425,29 @@ return  typeof this.arr[this.index] !== 'undefined'
 var countNodes = function(root) {
       return root ? 1 + countNodes(root.left) + countNodes(root.right) : 0;
   };
+
+  /**
+ * @param {TreeNode} root
+ * @param {number} target
+ * @return {TreeNode}
+ */
+// 1325. 删除给定值的叶子节点
+var removeLeafNodes = function(root, target) {
+
+      if(!root) {
+          return null
+      }
+  
+      if(root.left) {
+          root.left = removeLeafNodes(root.left,target)
+      }
+      if(root.right) {
+          root.right = removeLeafNodes(root.right,target)
+      }
+      if(root.val === target && !root.left  && !root.right) {
+          return null
+      } else {
+          return root
+      }
+  
+  };
