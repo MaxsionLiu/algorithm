@@ -416,3 +416,12 @@ BSTIterator.prototype.next = function() {
 BSTIterator.prototype.hasNext = function() {
 return  typeof this.arr[this.index] !== 'undefined'
 };
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 222. 完全二叉树的节点个数
+var countNodes = function(root) {
+      return root ? 1 + countNodes(root.left) + countNodes(root.right) : 0;
+  };
