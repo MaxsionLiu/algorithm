@@ -461,3 +461,38 @@ var removeLeafNodes = function(root, target) {
 var arrayStringsAreEqual = function(word1, word2) {
       return word1.reduce((pre,curr) => pre + curr) === word2.reduce((pre,curr) => pre + curr)
 };
+
+/**
+ * @param {TreeNode} root
+ */
+// 1261. 在受污染的二叉树中查找元素
+var FindElements = function(root) {
+      let arr = [0]
+      root.val = 0
+      function helper(node) {
+          if(!node) {
+              return null
+          }
+           if(node.left) {
+               node.left.val = 2*node.val + 1
+               arr.push(node.left.val)
+               node.left = helper(node.left)
+           }
+           if(node.right) {
+               node.right.val = 2*node.val + 2
+               arr.push(node.right.val)
+               node.right = helper(node.right)
+           }
+           return node
+      }
+      helper(root)
+      this.arr = arr
+   };
+   
+/** 
+ * @param {number} target
+ * @return {boolean}
+ */
+FindElements.prototype.find = function(target) {
+      return this.arr.some(item => item === target)
+};
