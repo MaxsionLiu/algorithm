@@ -451,3 +451,13 @@ var removeLeafNodes = function(root, target) {
       }
   
   };
+
+  /**
+ * @param {string[]} word1
+ * @param {string[]} word2
+ * @return {boolean}
+ */
+// 1662. 检查两个字符串数组是否相等
+var arrayStringsAreEqual = function(word1, word2) {
+      return word1.reduce((pre,curr) => pre + curr) === word2.reduce((pre,curr) => pre + curr)
+};
