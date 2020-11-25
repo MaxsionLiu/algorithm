@@ -496,3 +496,38 @@ var FindElements = function(root) {
 FindElements.prototype.find = function(target) {
       return this.arr.some(item => item === target)
 };
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 1161. 最大层内元素和
+var maxLevelSum = function(root) {
+      let queue = [root]
+      let result = []
+      while(queue.length > 0) {
+          let temp = 0
+          const len = queue.length
+          for(let i = 0; i < len; i++) {
+              const node = queue.shift()
+              temp += node.val
+              if(node.left) {
+                  queue.push(node.left)
+              }
+              if(node.right) {
+                  queue.push(node.right)
+              }
+          }
+          result.push(temp)
+      }
+      let idx = 0
+      let max = result[0]
+      for(let i = 1; i < result.length; i++) {
+         if(result[i] > max) {
+             max = result[i]
+             idx = i
+         }
+      }
+   
+      return idx + 1
+  };
