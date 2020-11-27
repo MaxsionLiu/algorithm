@@ -548,3 +548,33 @@ var flipEquiv = function(root1, root2) {
       return root1.val == root2.val && ((flipEquiv(root1.left,root2.left) && flipEquiv(root1.right,root2.right)) ||
       (flipEquiv(root1.left,root2.right) && flipEquiv(root1.right,root2.left)) )
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 1026. 节点与其祖先之间的最大差值
+var maxAncestorDiff = function(root) {
+      if(!root) {
+        return 0
+      }
+     // 当前值和左子树最小值的差值  当前值和右子树最小值的差值
+     const val = root.val
+     let max = 0
+     function helper(node) {
+         if(!node) {
+             return
+         }
+  
+         max = Math.max(max,Math.abs(val - node.val))
+  
+         if(node.left) {
+             helper(node.left) 
+         }
+         if(node.right) {
+             helper(node.right) 
+         }
+     }
+     helper(root)
+     return Math.max( max, maxAncestorDiff(root.left),maxAncestorDiff(root.right))
+  };
