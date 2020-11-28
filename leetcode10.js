@@ -578,3 +578,24 @@ var maxAncestorDiff = function(root) {
      helper(root)
      return Math.max( max, maxAncestorDiff(root.left),maxAncestorDiff(root.right))
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+// 337. 打家劫舍 III
+var rob = function(root) {
+      if (root == null) return 0;
+       // 打劫包括根节点的收益，保底是root.val
+       let robIncludeRoot = root.val; 
+       if (root.left) {
+         robIncludeRoot += rob(root.left.left) + rob(root.left.right);
+       }
+       if (root.right) {
+         robIncludeRoot += rob(root.right.left) + rob(root.right.right);
+       }
+       // 打劫不包括根节点的收益
+       const robExcludeRoot = rob(root.left) + rob(root.right); 
+       // 二者取其大
+       return Math.max(robIncludeRoot, robExcludeRoot); 
+     };
