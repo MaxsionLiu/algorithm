@@ -41,3 +41,30 @@ var removeDuplicates = function(S) {
       }
       return result.join('')
   };
+
+  /**
+ * @param {string} s
+ * @return {boolean}
+ */
+// 20. 有效的括号
+var isValid = function(s) {
+      let stack = []
+      let hash = {
+          ')' : '(',
+          '}' : '{',
+          ']' : '[' 
+      }
+      for(let i = 0; i < s.length; i++) {
+          const ch = s[i]
+          const st = stack[stack.length - 1]
+   
+          if( ch === '(' || ch === '{' || ch === '[' ) {
+              stack.push(ch)
+          }else if(hash[ch] === st){
+              stack.pop()
+          }else {
+              stack.push(ch)
+          }
+      }
+      return stack.length === 0
+   };
