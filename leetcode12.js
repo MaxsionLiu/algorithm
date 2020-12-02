@@ -43,3 +43,27 @@ var calPoints = function(ops) {
       }
       return stack.reduce((pre,curr) => pre + curr)
   };
+
+  /**
+ * @param {string} S
+ * @param {string} T
+ * @return {boolean}
+ */
+// 844. 比较含退格的字符串
+var backspaceCompare = function(S, T) {
+      let sStack = []
+      let tStack = []
+      function helper(s,stack) {
+          for(let i = 0; i < s.length; i++) {
+              const ch = s[i]
+              if(ch === '#') {
+                  stack.pop()
+              }else{
+                  stack.push(ch)
+              }
+          }
+      }
+      helper(S,sStack)
+      helper(T,tStack)
+      return sStack.join('') === tStack.join('')
+  };
