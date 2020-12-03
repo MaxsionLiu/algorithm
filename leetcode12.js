@@ -67,3 +67,52 @@ var backspaceCompare = function(S, T) {
       helper(T,tStack)
       return sStack.join('') === tStack.join('')
   };
+
+  /**
+ * initialize your data structure here.
+ */
+// 面试题 03.02. 栈的最小值
+var MinStack = function() {
+      this.stack = []
+      this.minStack = []
+   };
+   
+   /** 
+    * @param {number} x
+    * @return {void}
+    */
+   MinStack.prototype.push = function(x) {
+       this.stack.push(x)
+       if(this.minStack.length === 0){
+           this.minStack.push(x)
+       }else {
+           const p = this.minStack[this.minStack.length - 1]
+           if(p > x) {
+               this.minStack.push(x)
+           }else{
+               this.minStack.push(p)
+           }
+       }
+   };
+   
+   /**
+    * @return {void}
+    */
+   MinStack.prototype.pop = function() {
+      this.stack.pop()
+      this.minStack.pop()
+   };
+   
+   /**
+    * @return {number}
+    */
+   MinStack.prototype.top = function() {
+      return this.stack[this.stack.length - 1]
+   };
+   
+   /**
+    * @return {number}
+    */
+   MinStack.prototype.getMin = function() {
+      return this.minStack[this.minStack.length - 1]
+   };
