@@ -116,3 +116,24 @@ var MinStack = function() {
    MinStack.prototype.getMin = function() {
       return this.minStack[this.minStack.length - 1]
    };
+
+   /**
+ * @param {number[]} target
+ * @param {number} n
+ * @return {string[]}
+ */
+// 1441. 用栈操作构建数组
+var buildArray = function(target, n) {
+      let count = 0
+      let result = []
+      for(let i = 1; i <= target[target.length - 1];i++) {
+          if(i === target[count]) {
+              count++
+              result.push('Push')
+          } else {
+              result.push('Push')
+              result.push('Pop')
+          }
+      }
+      return result
+  };
