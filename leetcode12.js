@@ -160,3 +160,30 @@ var minOperations = function(logs) {
    
       return rootCount
    };
+
+   /**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+// 496. 下一个更大元素 I
+var nextGreaterElement = function(nums1, nums2) {
+      let result = []
+      let hash = {}
+      nums2.forEach((item,index) => hash[item] = index)
+      for(const n1 of nums1) {
+          const index = hash[n1]
+          let have = false
+          for(let j = index + 1; j < nums2.length; j++ ) {
+              if(nums2[j] > n1) {
+                  have = true
+                  result.push(nums2[j])
+                  break
+              }
+          }
+          if (!have) {
+              result.push(-1)
+          }
+      }
+      return result
+   };
