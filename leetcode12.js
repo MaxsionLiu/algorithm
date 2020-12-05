@@ -137,3 +137,26 @@ var buildArray = function(target, n) {
       }
       return result
   };
+
+
+  /**
+ * @param {string[]} logs
+ * @return {number}
+ */
+// 1598. 文件夹操作日志搜集器
+var minOperations = function(logs) {
+      let rootCount = 0
+      for(let i = 0; i < logs.length;i++) {
+          const op = logs[i]
+          if(op === './') {
+              continue
+          }else if(op === '../') {
+              rootCount--
+          }else{
+              rootCount++
+          }
+          rootCount = rootCount <= 0 ? 0 : rootCount
+      }
+   
+      return rootCount
+   };
