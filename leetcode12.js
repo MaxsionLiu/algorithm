@@ -187,3 +187,20 @@ var nextGreaterElement = function(nums1, nums2) {
       }
       return result
    };
+
+/**
+ * @param {number} numBottles
+ * @param {number} numExchange
+ * @return {number}
+ */
+// 1518. 换酒问题
+var numWaterBottles = function(numBottles, numExchange) {
+      let count = numBottles
+      let emptyBottles = numBottles
+      while(emptyBottles >= numExchange) {
+          const numEx = parseInt(emptyBottles / numExchange)
+          count += numEx
+          emptyBottles = numEx + emptyBottles % numExchange
+      }
+      return count
+   };
