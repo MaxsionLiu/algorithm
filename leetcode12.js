@@ -204,3 +204,37 @@ var numWaterBottles = function(numBottles, numExchange) {
       }
       return count
    };
+
+   /**
+ * @param {number[]} bills
+ * @return {boolean}
+ */
+// 860. 柠檬水找零
+var lemonadeChange = function(bills) {
+      let list = []
+      let fCount = 0
+      let tCount = 0
+      for(let i = 0;i < bills.length;i++) {
+          const getM = bills[i]
+          if(getM === 5) {
+             fCount++
+          }else if(getM === 10) {
+            if(fCount === 0) {
+                return false
+            } else {
+                fCount--
+                tCount++
+            }
+          }else {
+            if(tCount >= 1 && fCount >= 1) {
+               fCount--
+               tCount--
+            }else if(fCount >= 3){
+               fCount -= 3
+            } else {
+               return false
+            }
+          }
+      }
+      return true
+   };
