@@ -238,3 +238,38 @@ var lemonadeChange = function(bills) {
       }
       return true
    };
+
+   /**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+// 剑指 Offer 59 - I. 滑动窗口的最大值
+var maxSlidingWindow = function(nums, k) {
+      if(!nums || !nums.length || k === 0) {
+          return []
+      }
+      let result = []
+      let queue = []
+      for(let i = 0; i < k; i++) {
+  
+          while(queue.length && nums[i] >= nums[queue[queue.length - 1]]) {
+              queue.pop()
+          }
+          queue.push(i)
+      }
+      for(let i = k; i < nums.length;i++) {
+          result.push(nums[queue[0]])
+  
+          while(queue.length && nums[i] >= nums[queue[queue.length - 1]]) {
+              queue.pop()
+          }
+          if(queue.length && queue[0] <= i - k) {
+              queue.shift()
+          }
+  
+          queue.push(i)
+      }
+      result.push(nums[queue[0]])
+      return result
+  };
