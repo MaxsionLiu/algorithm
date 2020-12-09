@@ -283,3 +283,23 @@ var deleteNode = function(node) {
       node.val = node.next.val
       node.next = node.next.next
   };
+
+/**
+ * @param {ListNode} head
+ * @return {number}
+ */
+// 1290. 二进制链表转整数
+var getDecimalValue = function(head) {
+      let curr = head
+      let count = []
+      while(curr) {
+          count.push(curr.val)
+          curr = curr.next
+      }
+  
+      let result = 0
+      for(let i = count.length - 1; i >= 0; i--) {
+          result += count[count.length - 1 - i] * Math.pow(2,i)
+      }
+      return result
+  };
