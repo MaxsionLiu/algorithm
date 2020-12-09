@@ -273,3 +273,13 @@ var maxSlidingWindow = function(nums, k) {
       result.push(nums[queue[0]])
       return result
   };
+
+  /**
+ * @param {ListNode} node
+ * @return {void} Do not return anything, modify node in-place instead.
+ */
+// 面试题 02.03. 删除中间节点
+var deleteNode = function(node) {
+      node.val = node.next.val
+      node.next = node.next.next
+  };
