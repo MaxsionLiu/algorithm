@@ -303,3 +303,18 @@ var getDecimalValue = function(head) {
       }
       return result
   };
+
+  /**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+// 876. 链表的中间结点
+var middleNode = function(head) {
+      let curr = head
+      let result = []
+      while(curr) {
+        result.push(curr)
+        curr = curr.next
+      }
+      return result[Math.floor(result.length / 2)]
+  };
