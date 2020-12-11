@@ -318,3 +318,27 @@ var middleNode = function(head) {
       }
       return result[Math.floor(result.length / 2)]
   };
+
+  /**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+// 面试题 02.01. 移除重复节点
+var removeDuplicateNodes = function(head) {
+      if (!head) {
+          return head
+      }
+      let occurred = { [head.val] : true }
+      let pos = head
+      while(pos.next) {
+          let cur = pos.next
+          if (!occurred[cur.val]) {
+              occurred[cur.val] = true
+              pos = pos.next
+          } else {
+              pos.next = pos.next.next
+          }
+      }
+      pos.next = null
+      return head
+  };
