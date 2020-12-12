@@ -34,3 +34,35 @@ var levelOrder = function(root) {
       }
       return result;
    };
+
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {ListNode}
+ */
+// 剑指 Offer 22. 链表中倒数第k个节点
+var getKthFromEnd = function(head, k) {
+      if (!head) {
+            return null
+      }
+
+      let nodeCount = 0
+      let curr = head
+      while(curr) {
+            nodeCount++
+            curr = curr.next
+      }
+
+      let pre = head
+      let len = nodeCount - k + 1
+      let n = 0
+
+      while(pre) {
+            n++
+            if(n === len ) {
+            return pre
+            }
+            pre = pre.next
+      }
+      return null
+};
