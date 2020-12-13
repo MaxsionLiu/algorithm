@@ -66,3 +66,33 @@ var getKthFromEnd = function(head, k) {
       }
       return null
 };
+
+/**
+ * @param {ListNode} list1
+ * @param {number} a
+ * @param {number} b
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+// 1669. 合并两个链表
+var mergeInBetween = function(list1, a, b, list2) {
+      let l2 = list2
+      while(l2.next) {
+          l2 = l2.next
+      }
+      let pre = list1
+      let curr = list1.next
+      let i = 1
+      while(curr) {
+         if(i === a) {
+             pre.next = list2
+         }
+         if(i === b) {
+             l2.next = curr.next
+         }
+         i++
+         pre = curr
+         curr = pre.next
+      }
+      return list1
+  };
