@@ -96,3 +96,29 @@ var mergeInBetween = function(list1, a, b, list2) {
       }
       return list1
   };
+
+  /**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {number}
+ */
+// 面试题 02.02. 返回倒数第 k 个节点
+var kthToLast = function(head, k) {
+      let len = 0
+      let curr = head
+      while(curr) {
+          len++
+          curr = curr.next
+      }
+      let link = head
+      let j = 0
+      let count = len - k + 1
+      while(link) {
+          j++
+          if(j === count) {
+              return link.val
+          }
+          link = link.next
+      }
+      return -1
+   };
