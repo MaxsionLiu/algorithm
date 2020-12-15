@@ -122,3 +122,32 @@ var kthToLast = function(head, k) {
       }
       return -1
    };
+
+   /**
+ * @param {ListNode} head
+ * @return {TreeNode}
+ */
+// 109. 有序链表转换二叉搜索树
+var sortedListToBST = function(head) {
+      let list = []
+      let curr = head
+      while(curr) {
+          list.push(curr.val)
+          curr = curr.next
+      }
+      function helper(arr) {
+          const len = arr.length
+          if(len === 0) {
+              return null
+          }
+          if(len === 1) {
+              return new TreeNode(arr[0])
+          }
+          const mid = Math.floor(len / 2)
+          const node = new TreeNode(arr[mid])
+          node.left = helper(arr.slice(0,mid))
+          node.right = helper(arr.slice(mid+1))
+          return node
+      }
+      return helper(list)
+  };
