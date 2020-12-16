@@ -119,3 +119,25 @@ var reversePrint = function(head) {
   
       return res.reverse()
   };
+
+  /**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+// 剑指 Offer 24. 反转链表
+var reverseList = function(head) {
+      let curr = head
+      let pre = null
+      let reverseNode = null
+      while(curr) {
+         const next = curr.next
+         if(!next) {
+             reverseNode = curr
+         }
+         curr.next = pre
+  
+         pre = curr
+         curr = next
+      }
+      return reverseNode
+  };
