@@ -103,3 +103,19 @@ function partition(arr = [],left, right){
     arr[left] = temp
     return j
 }
+
+/**
+ * @param {ListNode} head
+ * @return {number[]}
+ */
+// 剑指 Offer 06. 从尾到头打印链表
+var reversePrint = function(head) {
+      let res = []
+      let curr = head
+      while(curr) {
+          res.push(curr.val)
+          curr = curr.next
+      }
+  
+      return res.reverse()
+  };
