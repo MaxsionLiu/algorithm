@@ -151,3 +151,35 @@ var sortedListToBST = function(head) {
       }
       return helper(list)
   };
+
+  /**
+ * @param {ListNode} headA
+ * @param {ListNode} headB
+ * @return {ListNode}
+ */
+// 剑指 Offer 52. 两个链表的第一个公共节点
+var getIntersectionNode = function(headA, headB) {
+      let stackA = []
+      let stackB = []
+      let nodeA = headA
+      let nodeB = headB
+      while(nodeA) {
+          stackA.push(nodeA)
+          nodeA = nodeA.next
+      }
+      while(nodeB) {
+          stackB.push(nodeB)
+          nodeB = nodeB.next
+      }
+      let n = Math.abs(stackA.length - stackB.length)
+      if(stackA.length > stackB.length) {
+         stackA = stackA.slice(n)
+      }else{
+         stackB = stackB.slice(n)
+      }
+      for(let i = 0; i < stackB.length; i++) {
+          if(stackA[i] === stackB[i]) {
+              return stackB[i]
+          }
+      }
+}    
