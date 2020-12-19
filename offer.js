@@ -182,4 +182,30 @@ var getIntersectionNode = function(headA, headB) {
               return stackB[i]
           }
       }
-}    
+}
+
+/**
+ * @param {ListNode} head
+ * @param {number} val
+ * @return {ListNode}
+ */
+// 剑指 Offer 18. 删除链表的节点
+var deleteNode = function(head, val) {
+      if(!head) {
+          return null
+      }
+      if(head.val === val) {
+          return head.next
+      }
+      let pre = head
+      let curr = head.next
+      while(curr) {
+          if(curr.val === val) {
+              pre.next = curr.next
+              break
+          }
+          pre = curr
+          curr = curr.next
+      }
+      return head
+   };
