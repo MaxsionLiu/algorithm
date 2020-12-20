@@ -209,3 +209,17 @@ var deleteNode = function(head, val) {
       }
       return head
    };
+
+   /**
+ * @param {number} n
+ * @return {number}
+ */
+// 剑指 Offer 10- I. 斐波那契数列
+var fib = function(n) {
+      let arr = [0,0,1]
+      for(let i = 3; i <= n + 1; i++) {
+          arr[i] = arr[i-1] + arr[i-2]
+                      arr[i] %= 1000000007;
+      }
+      return arr[n+1]
+  };
