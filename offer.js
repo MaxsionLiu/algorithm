@@ -231,9 +231,18 @@ var fib = function(n) {
 // 剑指 Offer 10- II. 青蛙跳台阶问题
 var numWays = function(n) {
       let arr = [1,1,2]
-      for(let i = 3; i <= n;i++) {
-          arr[i] = arr[i-1] + arr[i-2]
-          arr[i] %= 1000000007;
+      if( n <= 2) {
+          return arr[n]
       }
-      return arr[n]
+      let prepre = 1
+      let pre = 2
+      let curr = 0 
+      for(let i = 3; i <= n;i++) {
+          curr = prepre + pre
+          curr %= 1000000007;
+   
+          prepre = pre
+          pre = curr
+      }
+      return curr
    };
