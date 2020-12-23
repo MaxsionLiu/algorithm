@@ -271,3 +271,20 @@ var tribonacci = function(n) {
       }
       return t2
    };
+
+   /**
+ * @param {number} shorter
+ * @param {number} longer
+ * @param {number} k
+ * @return {number[]}
+ */
+// 面试题 16.11. 跳水板
+var divingBoard = function(shorter, longer, k) {
+      if(!k) return []// 判空
+       if(shorter==longer) return [shorter*k]// 短板和长版相等，结果只存在一种
+       const res=[];
+       for(let i=0;i<=k;i++){
+           res.push(i*longer + (k-i)*shorter)
+       }
+       return res;
+   };
