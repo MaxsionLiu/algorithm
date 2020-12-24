@@ -288,3 +288,18 @@ var divingBoard = function(shorter, longer, k) {
        }
        return res;
    };
+
+   /**
+ * @param {number} A
+ * @param {number} B
+ * @return {number}
+ */
+// 面试题 08.05. 递归乘法
+var multiply = function(A, B) {
+      if (B == 1) return A
+      if (B == 0) return 0
+      if (B & 1)
+          return multiply(A<<1, B>>1) + A 
+      else
+          return multiply(A<<1, B>>1)
+};
