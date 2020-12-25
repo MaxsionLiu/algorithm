@@ -303,3 +303,23 @@ var multiply = function(A, B) {
       else
           return multiply(A<<1, B>>1)
 };
+
+/**
+ * @param {number[]} arr
+ * @param {number} start
+ * @return {boolean}
+ */
+// 1306. 跳跃游戏 III
+var canReach = function(arr, start) {
+      const visited = new Set();
+       const queue = [start];
+       for (let len = 0, max = arr.length; len < queue.length; ++len) {
+         const idx = queue[len];
+         if (visited.has(idx)) continue;
+         if (arr[idx] === 0) return true;
+         visited.add(idx);
+         idx + arr[idx] < max && queue.push(idx + arr[idx]);
+         idx - arr[idx] >= 0 && queue.push(idx - arr[idx]);
+       }
+       return false;
+     };
