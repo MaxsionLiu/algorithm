@@ -338,3 +338,29 @@ var swapPairs = function(head) {
       newHead.next = head;
       return newHead;
   };
+
+  /**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+// 897. 递增顺序查找树
+var increasingBST = function(root) {
+
+      let result = []
+      function inorder(node) {
+          if(!node) {
+              return
+          }
+          inorder(node.left)
+          result.push(node.val)
+          inorder(node.right)
+      }
+      inorder(root)
+      const node = new TreeNode(-1)
+      let curr = node
+      for(let n of result) {
+         curr.right = new TreeNode(n)
+         curr = curr.right
+      }
+      return node.right
+   };
