@@ -364,3 +364,30 @@ var increasingBST = function(root) {
       }
       return node.right
    };
+
+   /**
+ * @param {string} S
+ * @return {number}
+ */
+// 921. 使括号有效的最少添加
+var minAddToMakeValid = function(S) {
+      let stack = []
+      const hash = {')' : '('}
+      for(let i = 0; i < S.length; i++) {
+         const ch = S[i]
+   
+         if(ch === '(') {
+             stack.push(ch)
+         }else{
+             const p = stack[stack.length - 1]
+             if(!p) {
+                 stack.push(ch)
+             }else if(p === hash[ch]) {
+                 stack.pop()
+             }else{
+                 stack.push(ch)
+             }
+         }
+      }
+      return stack.length
+   };
