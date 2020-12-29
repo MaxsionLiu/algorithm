@@ -391,3 +391,26 @@ var minAddToMakeValid = function(S) {
       }
       return stack.length
    };
+
+   /**
+ * @param {number[]} T
+ * @return {number[]}
+ */
+// 739. 每日温度
+var dailyTemperatures = function(T) {
+      let n = T.length;
+      let ans = [];
+      let s = [];
+      for(let i = 0; i < n; i++) {
+          ans.push(0)
+      }
+      for (let i = 0; i < n; ++i) {
+          while (s.length && T[i] > T[s[s.length - 1]]) {
+              let previousIndex = s[s.length - 1];
+              ans[previousIndex] = i - previousIndex;
+              s.pop();
+          }
+          s.push(i);
+      }
+      return ans;
+};
