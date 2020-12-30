@@ -414,3 +414,12 @@ var dailyTemperatures = function(T) {
       }
       return ans;
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+// 977. 有序数组的平方
+var sortedSquares = function(nums) {
+      return nums.map(e => e * e).sort((a, b) => a - b);
+};
