@@ -423,3 +423,35 @@ var dailyTemperatures = function(T) {
 var sortedSquares = function(nums) {
       return nums.map(e => e * e).sort((a, b) => a - b);
 };
+
+/**
+ * @param {number[]} A
+ * @param {number} m
+ * @param {number[]} B
+ * @param {number} n
+ * @return {void} Do not return anything, modify A in-place instead.
+ */
+// 面试题 10.01. 合并排序的数组
+var merge = function(A, m, B, n) {
+      let i = 0
+      let j = 0
+   
+      let sorted = new Array(m+n)
+      sorted.fill(0)
+      let temp = 0
+      while(i < m || j < n){
+           if(i === m) {
+               temp = B[j++]
+           }else if(j === n) {
+               temp = A[i++]
+           }else if(A[i] < B[j]){
+              temp = A[i++]
+           }else{
+              temp = B[j++]
+           }
+           sorted[i+j-1] = temp
+      }
+      for(let i = 0; i < A.length;i++) {
+          A[i] = sorted[i]
+      }
+   };
